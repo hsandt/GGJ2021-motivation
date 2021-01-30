@@ -41,13 +41,9 @@ namespace UnityConstants
         /// </summary>
         public const string CommandPopUp = "CommandPopUp";
         /// <summary>
-        /// Name of tag 'Gauge_WritingProgress'.
+        /// Name of tag 'GameplayValuesContainer'.
         /// </summary>
-        public const string Gauge_WritingProgress = "Gauge_WritingProgress";
-        /// <summary>
-        /// Name of tag 'Gauge_Motivation'.
-        /// </summary>
-        public const string Gauge_Motivation = "Gauge_Motivation";
+        public const string GameplayValuesContainer = "GameplayValuesContainer";
     }
 
     public static class SortingLayers
@@ -106,14 +102,14 @@ namespace UnityConstants
     public static class Scenes
     {
         /// <summary>
-        /// ID of scene 'SampleScene'.
+        /// ID of scene 'Proto_GameLoop'.
         /// </summary>
-        public const int SampleScene = 0;
+        public const int Proto_GameLoop = 0;
     }
 
     public enum ScenesEnum
     {
-        SampleScene = 0,
+        Proto_GameLoop = 0,
     }
 
     public static class Axes

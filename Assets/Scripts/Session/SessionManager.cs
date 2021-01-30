@@ -10,11 +10,8 @@ public class SessionManager : SingletonManager<SessionManager>
 {
     /* Cached external references */
 
-    /// Writing Progress Gameplay Value
-    private GameplayValue m_WritingProgress;
-    
-    /// Motivation Gameplay Value
-    private GameplayValue m_Motivation;
+    private GameplayValuesContainer m_GameplayValuesContainer;
+    public GameplayValuesContainer GameplayValuesContainer => m_GameplayValuesContainer;
     
     
     /* Cached data references */
@@ -24,24 +21,14 @@ public class SessionManager : SingletonManager<SessionManager>
 
     protected override void Init()
     {
-        GameObject writingProgressGameObject = GameObject.FindWithTag(Tags.Gauge_WritingProgress);
-        if (writingProgressGameObject)
+        GameObject gameplayValuesContainerGameObject = GameObject.FindWithTag(Tags.GameplayValuesContainer);
+        if (gameplayValuesContainerGameObject)
         {
-            m_WritingProgress = writingProgressGameObject.GetComponentOrFail<GameplayValue>();
+            m_GameplayValuesContainer = gameplayValuesContainerGameObject.GetComponentOrFail<GameplayValuesContainer>();
         }
         else
         {
-            Debug.LogError("No game object found with tag Gauge_WritingProgress, cannot set m_WritingProgress.");
-        }
-        
-        GameObject motivationGameObject = GameObject.FindWithTag(Tags.Gauge_Motivation);
-        if (motivationGameObject)
-        {
-            m_Motivation = motivationGameObject.GetComponentOrFail<GameplayValue>();
-        }
-        else
-        {
-            Debug.LogError("No game object found with tag Gauge_Motivation, cannot set m_Motivation.");
+            Debug.LogError("No game object found with tag GameplayValuesContainer, cannot set m_GameplayValuesContainer.");
         }
         
         m_DifficultySetting = ResourcesUtil.LoadOrFail<DifficultySetting>("DifficultySetting");
@@ -54,7 +41,7 @@ public class SessionManager : SingletonManager<SessionManager>
     
     private void SetupSession()
     {
-        m_WritingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
-        m_Motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
+        m_GameplayValuesContainer.writingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
+        m_GameplayValuesContainer.motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
     }
 }

@@ -7,5 +7,7 @@ public class Activity1_Eat : ActivityBehaviour
     public override void Execute()
     {
         Debug.Log("Eat");
+        
+        m_GameplayValuesContainer.motivation.IncreaseValue(10f);
     }
 }

@@ -87,13 +87,14 @@ public class ActivityManager : SingletonManager<ActivityManager>
         m_CommandPopUp.ShowWithActivities(activityDataArray);
     }
     
-    public ActivityBehaviour GetActivity(int id)
+    public void HideCommandPopUp()
     {
-        return m_ActivityBehavioursMap[id];
+        m_CommandPopUp.Hide();
     }
     
     public void StartActivity(int id)
     {
         m_ActivityBehavioursMap[id].Execute();
+        ActivityManager.Instance.HideCommandPopUp();
     }
 }

@@ -24,6 +24,11 @@ public class CommandPopUp : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void GenerateCommandButtons(ActivityData[] activityDataArray)
     {
         // pool the buttons with lazy creation if needed:

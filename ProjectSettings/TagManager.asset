@@ -6,8 +6,7 @@ TagManager:
   tags:
   - Activities
   - CommandPopUp
-  - Gauge_WritingProgress
-  - Gauge_Motivation
+  - GameplayValuesContainer
   layers:
   - Default
   - TransparentFX
