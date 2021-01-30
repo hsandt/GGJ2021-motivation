@@ -33,7 +33,7 @@ public class SessionManager : SingletonManager<SessionManager>
     
     private void SetupSession()
     {
-        writingProgress.Init(m_difficultySetting.m_MaxWritingProgress, m_difficultySetting.m_InitialWritingProgress);
-        motivation.Init(m_difficultySetting.m_MaxMotivation, m_difficultySetting.m_InitialMotivation);
+        writingProgress.Init(m_difficultySetting.maxWritingProgress, m_difficultySetting.initialWritingProgress);
+        motivation.Init(m_difficultySetting.maxMotivation, m_difficultySetting.initialMotivation);
     }
 }

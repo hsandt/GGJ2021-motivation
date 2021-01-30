@@ -7,16 +7,16 @@ using UnityEngine;
 public class DifficultySetting : ScriptableObject {
 
     [Tooltip("Initial value for Writing Progress")]
-    public float m_InitialWritingProgress = 0f;
+    public float initialWritingProgress = 0f;
 
     [Tooltip("Max value for Writing Progress")]
-    public float m_MaxWritingProgress = 100f;
+    public float maxWritingProgress = 100f;
 
     [Tooltip("Initial value for Motivation")]
-    public float m_InitialMotivation = 50f;
+    public float initialMotivation = 50f;
 
     [Tooltip("Max value for Motivation")]
-    public float m_MaxMotivation = 100f;
+    public float maxMotivation = 100f;
 
 }
 
