@@ -10,8 +10,11 @@ public class GameplayValue : MonoBehaviour
     private string m_ValueName = "Value name";
     public string ValueName => m_ValueName;
 
-    [SerializeField, Tooltip("Max value")]
-    private float m_MaxValue = 1f;
+    
+    /* Parameters set by Session Manager */
+    
+    /// Max value
+    private float m_MaxValue;
     
     
     /* State */
@@ -23,6 +26,12 @@ public class GameplayValue : MonoBehaviour
     /// List of observers
     private List<IGameplayValueObserver> m_Observers = new List<IGameplayValueObserver>();
 
+    
+    public void Init(float maxValue, float initialValue)
+    {
+        m_MaxValue = maxValue;
+        SetValue(initialValue);
+    }
     
     public void SetValue(float value)
     {
