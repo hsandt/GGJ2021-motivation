@@ -4,7 +4,8 @@ using UnityEngine;
 
 /// Difficulty setting parameters
 [CreateAssetMenu(fileName = "DifficultySetting", menuName = "Data/Difficulty Setting", order = 2)]
-public class DifficultySetting : ScriptableObject {
+public class DifficultySetting : ScriptableObject
+{
 
     [Tooltip("Initial value for Writing Progress")]
     public float initialWritingProgress = 0f;

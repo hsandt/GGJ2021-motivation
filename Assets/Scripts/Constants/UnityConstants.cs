@@ -36,6 +36,18 @@ namespace UnityConstants
         /// Name of tag 'Activities'.
         /// </summary>
         public const string Activities = "Activities";
+        /// <summary>
+        /// Name of tag 'CommandPopUp'.
+        /// </summary>
+        public const string CommandPopUp = "CommandPopUp";
+        /// <summary>
+        /// Name of tag 'Gauge_WritingProgress'.
+        /// </summary>
+        public const string Gauge_WritingProgress = "Gauge_WritingProgress";
+        /// <summary>
+        /// Name of tag 'Gauge_Motivation'.
+        /// </summary>
+        public const string Gauge_Motivation = "Gauge_Motivation";
     }
 
     public static class SortingLayers

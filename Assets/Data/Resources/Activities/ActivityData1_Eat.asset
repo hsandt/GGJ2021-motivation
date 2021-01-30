@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 535cc182fd48fbbc7a6cc5474e33e71f, type: 3}
-  m_Name: ActivityData
+  m_Name: ActivityData1_Eat
   m_EditorClassIdentifier: 
-  activityName: Some activity
-  activityDescription: Do something.
-  m_Script: {fileID: 0}
+  id: 1
+  activityName: Eat
+  description: Eat stuff

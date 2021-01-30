@@ -4,26 +4,47 @@ using UnityEngine;
 
 using CommonsHelper;
 using CommonsPattern;
+using UnityConstants;
 
 public class SessionManager : SingletonManager<SessionManager>
 {
-    [Header("External references")]
+    /* Cached external references */
 
-    [Tooltip("Writing Progress Gameplay Value")]
-    public GameplayValue writingProgress;
+    /// Writing Progress Gameplay Value
+    private GameplayValue m_WritingProgress;
     
-    [Tooltip("Motivation Gameplay Value")]
-    public GameplayValue motivation;
+    /// Motivation Gameplay Value
+    private GameplayValue m_Motivation;
     
     
     /* Cached data references */
 
-    private DifficultySetting m_difficultySetting;
+    private DifficultySetting m_DifficultySetting;
 
 
-    private void Awake()
+    protected override void Init()
     {
-        m_difficultySetting = ResourcesUtil.LoadOrFail<DifficultySetting>("DifficultySetting");
+        GameObject writingProgressGameObject = GameObject.FindWithTag(Tags.Gauge_WritingProgress);
+        if (writingProgressGameObject)
+        {
+            m_WritingProgress = writingProgressGameObject.GetComponentOrFail<GameplayValue>();
+        }
+        else
+        {
+            Debug.LogError("No game object found with tag Gauge_WritingProgress, cannot set m_WritingProgress.");
+        }
+        
+        GameObject motivationGameObject = GameObject.FindWithTag(Tags.Gauge_Motivation);
+        if (motivationGameObject)
+        {
+            m_Motivation = motivationGameObject.GetComponentOrFail<GameplayValue>();
+        }
+        else
+        {
+            Debug.LogError("No game object found with tag Gauge_Motivation, cannot set m_Motivation.");
+        }
+        
+        m_DifficultySetting = ResourcesUtil.LoadOrFail<DifficultySetting>("DifficultySetting");
     }
 
     private void Start()
@@ -33,7 +54,7 @@ public class SessionManager : SingletonManager<SessionManager>
     
     private void SetupSession()
     {
-        writingProgress.Init(m_difficultySetting.maxWritingProgress, m_difficultySetting.initialWritingProgress);
-        motivation.Init(m_difficultySetting.maxMotivation, m_difficultySetting.initialMotivation);
+        m_WritingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
+        m_Motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
     }
 }

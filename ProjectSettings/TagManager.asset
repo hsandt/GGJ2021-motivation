@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Activities
+  - CommandPopUp
+  - Gauge_WritingProgress
+  - Gauge_Motivation
   layers:
   - Default
   - TransparentFX
