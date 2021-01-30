@@ -34,4 +34,13 @@ public class Command : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => { ActivityManager.Instance.StartActivity(activityData.id); });
     }
+    
+    public void AssignCloseAction()
+    {
+        buttonTextWidget.text = "Close";
+        
+        // we use pooling so this button may have been used for something else, so clear listeners first
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => { ActivityManager.Instance.HideCommandPopUp(); });
+    }
 }

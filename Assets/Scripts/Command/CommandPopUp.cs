@@ -31,23 +31,28 @@ public class CommandPopUp : MonoBehaviour
 
     private void GenerateCommandButtons(ActivityData[] activityDataArray)
     {
+        // we need one button per activity, +1 for Close
+        int requiredButtonsCount = activityDataArray.Length + 1;
+        
         // pool the buttons with lazy creation if needed:
         int previousButtonsCount = commandButtonsParent.childCount;
         
         // First, create new widgets if there are not enough in the pool
-        for (int i = previousButtonsCount; i < activityDataArray.Length; i++)
+        for (int i = previousButtonsCount; i < requiredButtonsCount; i++)
         {
             Instantiate(commandButtonPrefab, commandButtonsParent);
         }
 
         // Second, disable any extra widgets we don't need now
         // First and Second are mutually exclusive cases
-        for (int i = activityDataArray.Length; i < previousButtonsCount; i++)
+        for (int i = requiredButtonsCount; i < previousButtonsCount; i++)
         {
             commandButtonsParent.GetChild(i).gameObject.SetActive(false);
         }
         
         // Third, go over widgets actually used and set them up
+        
+        // Setup the activities
         for (int i = 0; i < activityDataArray.Length; i++)
         {
             ActivityData activityData = activityDataArray[i];
@@ -56,5 +61,11 @@ public class CommandPopUp : MonoBehaviour
             command.AssignActivity(activityData);
             commandButton.SetActive(true);
         }
+        
+        // Setup the close button
+        GameObject closeCommandButton = commandButtonsParent.GetChild(requiredButtonsCount - 1).gameObject;
+        var closeCommand = closeCommandButton.GetComponentOrFail<Command>();
+        closeCommand.AssignCloseAction();
+        closeCommandButton.SetActive(true);
     }
 }

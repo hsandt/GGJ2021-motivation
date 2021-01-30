@@ -95,6 +95,6 @@ public class ActivityManager : SingletonManager<ActivityManager>
     public void StartActivity(int id)
     {
         m_ActivityBehavioursMap[id].Execute();
-        ActivityManager.Instance.HideCommandPopUp();
+        HideCommandPopUp();
     }
 }
