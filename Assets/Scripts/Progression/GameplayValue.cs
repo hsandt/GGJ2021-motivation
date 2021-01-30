@@ -6,6 +6,10 @@ public class GameplayValue : MonoBehaviour
 {
     [Header("Parameters")]
 
+    [SerializeField, Tooltip("Readable name")]
+    private string m_ValueName = "Value name";
+    public string ValueName => m_ValueName;
+
     [SerializeField, Tooltip("Max value")]
     private float m_MaxValue = 1f;
     

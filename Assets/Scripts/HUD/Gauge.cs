@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Gauge : MonoBehaviour, IGameplayValueObserver
@@ -15,10 +16,18 @@ public class Gauge : MonoBehaviour, IGameplayValueObserver
     [Tooltip("Gauge Fill Rect Transform")]
     public RectTransform fillRectTransform;
 
+    [Tooltip("Value Name Widget")]
+    public TextMeshProUGUI valeNameWidget;
+
+    [Tooltip("Value Text Widget")]
+    public TextMeshProUGUI valueTextWidget;
+
     
     private void Awake()
     {
         trackedGameplayValue.RegisterObserver(this);
+        valeNameWidget.text = trackedGameplayValue.ValueName;
+        
         RefreshGaugeFillSize();
     }
 
@@ -32,6 +41,9 @@ public class Gauge : MonoBehaviour, IGameplayValueObserver
 
     private void RefreshGaugeFillSize()
     {
+        // 25.6 -> "25"
+        valueTextWidget.text = trackedGameplayValue.CurrentValue.ToString("0");
+        
         fillRectTransform.anchorMax = new Vector2(trackedGameplayValue.GetRatio(), 1f);
     }
 
