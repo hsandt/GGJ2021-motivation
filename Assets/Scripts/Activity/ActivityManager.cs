@@ -55,6 +55,11 @@ public class ActivityManager : SingletonManager<ActivityManager>
         }
     }
 
+    private void Start()
+    {
+        HideCommandPopUp();
+    }
+
     private void RegisterAllActivityBehaviours()
     {
         GameObject activitiesParent = GameObject.FindWithTag(Tags.Activities);
