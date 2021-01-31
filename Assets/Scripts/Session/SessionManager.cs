@@ -8,6 +8,12 @@ using UnityConstants;
 
 public class SessionManager : SingletonManager<SessionManager>
 {
+    [Header("External references")]
+
+    [Tooltip("Pause Menu")]
+    public PauseMenu pauseMenu;
+
+    
     /* Cached external references */
 
     private GameplayValuesContainer m_GameplayValuesContainer;
@@ -18,7 +24,12 @@ public class SessionManager : SingletonManager<SessionManager>
 
     private DifficultySetting m_DifficultySetting;
 
+    
+    /* State */
+    
+    private bool m_Paused;
 
+    
     protected override void Init()
     {
         GameObject gameplayValuesContainerGameObject = GameObject.FindWithTag(Tags.GameplayValuesContainer);
@@ -41,7 +52,42 @@ public class SessionManager : SingletonManager<SessionManager>
     
     private void SetupSession()
     {
+        m_Paused = false;
+        pauseMenu.gameObject.SetActive(false);
+        
         m_GameplayValuesContainer.writingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
         m_GameplayValuesContainer.motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
+    }
+    
+
+    public void TogglePause()
+    {
+        m_Paused = !m_Paused;
+
+        if (m_Paused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+    }
+
+    private void PauseGame()
+    {
+        //Time.timeScale = 0f;
+        pauseMenu.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        pauseMenu.gameObject.SetActive(false);
+    }
+    
+    public void BackToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
