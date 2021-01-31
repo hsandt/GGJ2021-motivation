@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TutorialData
   m_EditorClassIdentifier: 
   tutorialMessages:
-  - senderName: Editor
+  - senderName: Editor@BelievableStoriesPublishing.xxx
+    subjectText: Writing process reminder
     messageText: 'Hey, you''re starting writing your next short story today, right?
 
 
@@ -33,7 +34,8 @@ MonoBehaviour:
       sure to do proper research to avoid being stuck and write quality content.
       If in doubt, try to do something else than writing for a while, the important
       is to keep your motivation!'
-  - senderName: Mum
+  - senderName: Mum.xxx@___mail.co.uk
+    subjectText: Hello love!
     messageText: 'How are you doing with your new novel?
 
 
@@ -44,3 +46,16 @@ MonoBehaviour:
 
       P.S.: did you remember to put the bin
       out?'
+  - senderName: Editor@BelievableStoriesPublishing.xxx
+    subjectText: Confirm reception of initial draft
+    messageText: 'I''ve received the last chapter of your book and I will be sending
+      it for proof reading soon. Good job!
+
+
+      You certainly deserve some rest
+      now!'
+  - senderName: Editor@BelievableStoriesPublishing.xxx
+    subjectText: Deadline reached...
+    messageText: Unfortunately you missed the deadline for releasing the book. I
+      tried to convince the head of publishing to give you an extent, but they preferred
+      cancelling the contract. Try harder next time...
