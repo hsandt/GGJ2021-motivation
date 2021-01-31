@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 535cc182fd48fbbc7a6cc5474e33e71f, type: 3}
-  m_Name: ActivityData2_Write
+  m_Name: ActivityData10_SmartphoneLeisure
   m_EditorClassIdentifier: 
-  id: 2
-  activityName: Write
-  description: Write stuff
+  id: 10
+  activityName: Leisure (smartphone)
+  description: Watch an entertaining video or read a webcomic/novel on your smartphone.
