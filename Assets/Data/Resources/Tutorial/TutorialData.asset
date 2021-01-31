@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d350cd68af7fb2afdaad3572565b209b, type: 3}
+  m_Name: TutorialData
+  m_EditorClassIdentifier: 
+  tutorialMessages:
+  - senderName: Editor
+    messageText: 'Hey, you''re starting writing your next short story today, right?
+
+
+      You''ve
+      already got the plot, so all you have to do is writing the actual chapters.
+      You told me there would be 3 of them. For each chapter you just have to follow
+      the usual steps:
+
+      1. plan
+
+      2. write actions
+
+      3. write dialogues
+
+
+      Make
+      sure to do proper research to avoid being stuck and write quality content.
+      If in doubt, try to do something else than writing for a while, the important
+      is to keep your motivation!'
+  - senderName: Mum
+    messageText: 'How are you doing with your new novel?
+
+
+      Make sure to keep
+      hydrated, it has been pretty hot these days. And don''t push yourself too hard,
+      get some rest when you need to.
+
+
+      P.S.: did you remember to put the bin
+      out?'
