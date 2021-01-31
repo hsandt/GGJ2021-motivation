@@ -72,9 +72,7 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
     public void TogglePause()
     {
-        m_Paused = !m_Paused;
-
-        if (m_Paused)
+        if (!m_Paused)
         {
             PauseGame();
         }
@@ -87,12 +85,14 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     private void PauseGame()
     {
         //Time.timeScale = 0f;
+        m_Paused = true;
         pauseMenu.gameObject.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1.0f;
+//        Time.timeScale = 1.0f;
+        m_Paused = false;
         pauseMenu.gameObject.SetActive(false);
     }
     
