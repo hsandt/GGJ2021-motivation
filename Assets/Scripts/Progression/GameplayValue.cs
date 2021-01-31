@@ -48,7 +48,7 @@ public class GameplayValue : MonoBehaviour
     {
         SetValue(m_CurrentValue - deltaValue);
     }
-    
+
     public float GetRatio()
     {
         return m_MaxValue > 0f ? m_CurrentValue / m_MaxValue : 1f;

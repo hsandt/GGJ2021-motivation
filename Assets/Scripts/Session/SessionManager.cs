@@ -6,7 +6,7 @@ using CommonsHelper;
 using CommonsPattern;
 using UnityConstants;
 
-public class SessionManager : SingletonManager<SessionManager>
+public class SessionManager : SingletonManager<SessionManager>, IGameplayValueObserver
 {
     [Header("External references")]
 
@@ -57,8 +57,18 @@ public class SessionManager : SingletonManager<SessionManager>
         
         m_GameplayValuesContainer.writingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
         m_GameplayValuesContainer.motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
+        
+        // track progress for Victory
+        m_GameplayValuesContainer.writingProgress.RegisterObserver(this);
     }
     
+    private void OnDestroy()
+    {
+        if (m_GameplayValuesContainer.writingProgress)
+        {
+            m_GameplayValuesContainer.writingProgress.UnregisterObserver(this);
+        }
+    }
 
     public void TogglePause()
     {
@@ -89,5 +99,15 @@ public class SessionManager : SingletonManager<SessionManager>
     public void BackToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void NotifyValueChange()
+    {
+        // progress changed, check if complete
+        if (m_GameplayValuesContainer.writingProgress.GetRatio() >= 1f)
+        {
+            // success!
+            TutorialManager.Instance.ShowMessage(MessageEnum.Success);
+        }
     }
 }
