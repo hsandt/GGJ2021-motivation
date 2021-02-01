@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// Difficulty setting parameters
-[CreateAssetMenu(fileName = "DifficultySetting", menuName = "Data/Difficulty Setting", order = 2)]
+[CreateAssetMenu(fileName = "DifficultySetting", menuName = "Data/Difficulty Setting", order = 3)]
 public class DifficultySetting : ScriptableObject
 {
 

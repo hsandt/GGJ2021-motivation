@@ -52,14 +52,30 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     
     private void SetupSession()
     {
+        StartCoroutine(SetupAsync());
+    }
+
+    private IEnumerator SetupAsync()
+    {
+        SetupSessionInstant();
+        // wait 1 frame so all gameplay value observers are registered (including SessionManager itself)
+        yield return null;
+        SetupSessionDelayed();
+    }
+    
+    private void SetupSessionInstant()
+    {
         m_Paused = false;
         pauseMenu.gameObject.SetActive(false);
-        
-        m_GameplayValuesContainer.writingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
-        m_GameplayValuesContainer.motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
-        
+
         // track progress for Victory
         m_GameplayValuesContainer.writingProgress.RegisterObserver(this);
+    }
+
+    private void SetupSessionDelayed()
+    {
+        m_GameplayValuesContainer.writingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
+        m_GameplayValuesContainer.motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
     }
     
     private void OnDestroy()
