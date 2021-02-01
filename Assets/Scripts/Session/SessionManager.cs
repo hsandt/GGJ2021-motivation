@@ -8,6 +8,12 @@ using UnityConstants;
 
 public class SessionManager : SingletonManager<SessionManager>, IGameplayValueObserver
 {
+    [Header("Assets references")]
+
+    [Tooltip("Difficulty setting to use for this session")]
+    public DifficultySetting difficultySetting;
+
+    
     [Header("External references")]
 
     [Tooltip("Pause Menu")]
@@ -19,11 +25,6 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     private GameplayValuesContainer m_GameplayValuesContainer;
     public GameplayValuesContainer GameplayValuesContainer => m_GameplayValuesContainer;
     
-    
-    /* Cached data references */
-
-    private DifficultySetting m_DifficultySetting;
-
     
     /* State */
     
@@ -41,8 +42,6 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
         {
             Debug.LogError("No game object found with tag GameplayValuesContainer, cannot set m_GameplayValuesContainer.");
         }
-        
-        m_DifficultySetting = ResourcesUtil.LoadOrFail<DifficultySetting>("DifficultySetting");
     }
 
     private void Start()
@@ -74,8 +73,8 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
     private void SetupSessionDelayed()
     {
-        m_GameplayValuesContainer.writingProgress.Init(m_DifficultySetting.maxWritingProgress, m_DifficultySetting.initialWritingProgress);
-        m_GameplayValuesContainer.motivation.Init(m_DifficultySetting.maxMotivation, m_DifficultySetting.initialMotivation);
+        m_GameplayValuesContainer.writingProgress.Init(difficultySetting.maxWritingProgress, difficultySetting.initialWritingProgress);
+        m_GameplayValuesContainer.motivation.Init(difficultySetting.maxMotivation, difficultySetting.initialMotivation);
     }
     
     private void OnDestroy()

@@ -8,7 +8,7 @@ public class Activity11_Rest : ActivityBehaviour
     {
         Debug.Log("Rest");
         
-        m_GameplayValuesContainer.motivation.DecreaseValue(5f);
-        m_GameplayValuesContainer.writingProgress.IncreaseValue(10f);
+        m_GameplayValuesContainer.motivation.ChangeValue(20f);
+        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
     }
 }

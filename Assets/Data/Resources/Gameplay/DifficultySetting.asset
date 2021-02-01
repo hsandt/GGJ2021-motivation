@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be180ea78d3537d5a814ba22f4ff6f5, type: 3}
   m_Name: DifficultySetting
   m_EditorClassIdentifier: 
-  m_InitialWritingProgress: -0.09
-  m_MaxWritingProgress: 100
-  m_InitialMotivation: 50
-  m_MaxMotivation: 100
+  initialWritingProgress: 0
+  maxWritingProgress: 100
+  initialMotivation: 20
+  maxMotivation: 100

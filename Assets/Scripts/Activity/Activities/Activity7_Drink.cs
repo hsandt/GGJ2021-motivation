@@ -8,6 +8,6 @@ public class Activity7_Drink : ActivityBehaviour
     {
         Debug.Log("Drink");
         
-        m_GameplayValuesContainer.motivation.IncreaseValue(10f);
+        m_GameplayValuesContainer.motivation.ChangeValue(10f);
     }
 }

@@ -8,7 +8,7 @@ public class Activity8_Garbage : ActivityBehaviour
     {
         Debug.Log("Garbage");
         
-        m_GameplayValuesContainer.motivation.DecreaseValue(5f);
-        m_GameplayValuesContainer.writingProgress.IncreaseValue(10f);
+        m_GameplayValuesContainer.motivation.ChangeValue(15f);
+        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
     }
 }

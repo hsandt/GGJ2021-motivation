@@ -8,7 +8,7 @@ public class Activity4_FeedbackEditor : ActivityBehaviour
     {
         Debug.Log("FeedbackEditor");
         
-        m_GameplayValuesContainer.motivation.DecreaseValue(5f);
-        m_GameplayValuesContainer.writingProgress.IncreaseValue(10f);
+        m_GameplayValuesContainer.motivation.ChangeValue(-10f);
+        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
     }
 }

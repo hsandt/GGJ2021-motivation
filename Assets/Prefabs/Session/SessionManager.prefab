@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41ba874db5ba76a68f1ed4c18796067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficultySetting: {fileID: 11400000, guid: ee5e41554c626806eb140e62cd31ae76, type: 2}
+  pauseMenu: {fileID: 0}

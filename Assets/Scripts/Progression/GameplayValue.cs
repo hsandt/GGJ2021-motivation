@@ -39,14 +39,10 @@ public class GameplayValue : MonoBehaviour
         NotifyValueChangeToObservers();
     }
     
-    public void IncreaseValue(float deltaValue)
+    public void ChangeValue(float deltaValue)
     {
+        // pass negative deltaValue to decrease
         SetValue(m_CurrentValue + deltaValue);
-    }
-    
-    public void DecreaseValue(float deltaValue)
-    {
-        SetValue(m_CurrentValue - deltaValue);
     }
 
     public float GetRatio()

@@ -57,7 +57,11 @@ public class AudioManager : SingletonManager<AudioManager>, IGameplayValueObserv
 
     public void PlayBGM(AudioClip bgm)
     {
-        bgmAudioSource.PlayOneShot(bgm);
+        if (bgmAudioSource.clip != bgm)
+        {
+            bgmAudioSource.clip = bgm;
+            bgmAudioSource.Play();
+        }
     }
 
     public void PlaySFX(AudioClip sfx)
