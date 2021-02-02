@@ -33,8 +33,6 @@ public class FurnitureCommandController : MonoBehaviour
     // OnPointerClick callback
     public void ShowCommandPopUpForAvailableActivities()
     {
-        PlayerController.Instance.GoingToPC = true;
-
         ActivityManager.Instance.ShowCommandPopUp(activityDataArray);
     }
     
