@@ -13,45 +13,10 @@ public class Objects : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    // OnPointerClick callback
+    public void OnClick()
     {
-        if (PC)
-        {
-            if (mouseIn)
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0)) //detect if you cliked in the PC
-                {
-                    PlayerController.Instance.GoingToPC = true;
-                }
-            }
-
-        }
-
-
-
-        if (Bed)
-        {
-            if (mouseIn)
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0))//detect if you cliked in the Bed
-                {
-                    PlayerController.Instance.GoingToBed = true;
-                }
-            }
-        }
-        
-    }
-
-    private void OnMouseEnter()
-    {
-        mouseIn = true;
-        
-    }
-
-    private void OnMouseExit()
-    {
-        mouseIn = false;
+        PlayerController.Instance.GoingToPC = true;
     }
 }
