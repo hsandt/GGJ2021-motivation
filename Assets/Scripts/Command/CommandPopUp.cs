@@ -20,8 +20,10 @@ public class CommandPopUp : MonoBehaviour
 
     public void ShowWithActivities(ActivityData[] activityDataArray)
     {
-        GenerateCommandButtons(activityDataArray);
+        // make sure to activate just before assigning, in case it was deactivated in the Editor,
+        // as component refs are cached on Command.Awake, and command buttons are children of this game object
         gameObject.SetActive(true);
+        GenerateCommandButtons(activityDataArray);
     }
 
     public void Hide()
@@ -58,14 +60,16 @@ public class CommandPopUp : MonoBehaviour
             ActivityData activityData = activityDataArray[i];
             GameObject commandButton = commandButtonsParent.GetChild(i).gameObject;
             var command = commandButton.GetComponentOrFail<Command>();
-            command.AssignActivity(activityData);
+            // make sure to activate just before assigning, in case it was deactivated in the Editor,
+            // as component refs are cached on Command.Awake
             commandButton.SetActive(true);
+            command.AssignActivity(activityData);
         }
         
         // Setup the close button
         GameObject closeCommandButton = commandButtonsParent.GetChild(requiredButtonsCount - 1).gameObject;
         var closeCommand = closeCommandButton.GetComponentOrFail<Command>();
-        closeCommand.AssignCloseAction();
         closeCommandButton.SetActive(true);
+        closeCommand.AssignCloseAction();
     }
 }
