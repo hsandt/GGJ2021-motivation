@@ -18,13 +18,16 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
     [Tooltip("Pause Menu")]
     public PauseMenu pauseMenu;
+    
+    [Tooltip("Player character animator: if not set, find object with tag, but doesn't work if object is inactive")]
+    public Animator playerCharacterAnimator;
 
     
     /* Cached external references */
 
     private GameplayValuesContainer m_GameplayValuesContainer;
     public GameplayValuesContainer GameplayValuesContainer => m_GameplayValuesContainer;
-    
+
     
     /* State */
     
@@ -41,6 +44,19 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
         else
         {
             Debug.LogError("No game object found with tag GameplayValuesContainer, cannot set m_GameplayValuesContainer.");
+        }
+        
+        if (playerCharacterAnimator == null)
+        {
+            GameObject playerCharacter = GameObject.FindWithTag(Tags.Player);
+            if (playerCharacter)
+            {
+                playerCharacterAnimator = playerCharacter.GetComponent<Animator>();
+            }
+            else
+            {
+                Debug.LogError("No game object found with tag Player, cannot set playerCharacterAnimator.");
+            }
         }
     }
 
@@ -69,6 +85,8 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
         // track progress for Victory
         m_GameplayValuesContainer.writingProgress.RegisterObserver(this);
+        
+        playerCharacterAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)CharacterPoseEnum.Idle);
     }
 
     private void SetupSessionDelayed()

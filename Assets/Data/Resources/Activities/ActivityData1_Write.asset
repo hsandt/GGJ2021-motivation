@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 1
   activityName: Write novel
   description: Progress in writing your short story
+  characterPoseEnum: 8

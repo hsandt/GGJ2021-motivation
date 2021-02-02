@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 7
   activityName: Drink
   description: Have a drink sitting quietly at your desk
+  characterPoseEnum: 1

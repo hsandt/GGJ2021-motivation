@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 4
   activityName: Feedback (editor)
   description: Ask feedback to your editor. She's pretty strict!
+  characterPoseEnum: 3

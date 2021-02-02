@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 8
   activityName: Garbage
   description: Put the garbage bin out. A critical task after some time has passed!
+  characterPoseEnum: 7

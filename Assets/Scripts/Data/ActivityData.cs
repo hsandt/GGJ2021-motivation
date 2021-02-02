@@ -16,5 +16,8 @@ public class ActivityData : ScriptableObject
     [Tooltip("Description of the activity")]
     public string description = "Do something.";
 
+    [Tooltip("Character pose to show during activity")]
+    public CharacterPoseEnum characterPoseEnum = CharacterPoseEnum.Idle;
+
 }
 

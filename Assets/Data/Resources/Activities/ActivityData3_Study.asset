@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 3
   activityName: Study
   description: Read advice on writing and polish your skills by training
+  characterPoseEnum: 4

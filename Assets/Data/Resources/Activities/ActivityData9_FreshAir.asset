@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 9
   activityName: Fresh air
   description: Get some fresh air at the local window
+  characterPoseEnum: 6

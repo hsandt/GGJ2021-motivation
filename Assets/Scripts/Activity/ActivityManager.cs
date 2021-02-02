@@ -17,10 +17,16 @@ public class ActivityManager : SingletonManager<ActivityManager>
     /// Dictionary of activity ID to Activity, derived from m_Activities
     private readonly Dictionary<int, ActivityBehaviour> m_ActivityBehavioursMap = new Dictionary<int, ActivityBehaviour>();
 
-    
+
     /* Cached external references */
 
-    private CommandPopUp m_CommandPopUp;
+    public Animator m_PlayerCharacterAnimator;
+
+    
+    /* External references with fallback */
+
+    [Tooltip("Command popup: if not set, find object with tag, but doesn't work if object is inactive")]
+    public CommandPopUp commandPopUp;
 
 
     protected override void Init()
@@ -44,19 +50,25 @@ public class ActivityManager : SingletonManager<ActivityManager>
             }
         }
 
-        GameObject commandPopUpGameObject = GameObject.FindWithTag(Tags.CommandPopUp);
-        if (commandPopUpGameObject)
+        if (commandPopUp == null)
         {
-            m_CommandPopUp = commandPopUpGameObject.GetComponent<CommandPopUp>();
-        }
-        else
-        {
-            Debug.LogError("No game object found with tag CommandPopUp, cannot set m_CommandPopUp.");
+            GameObject commandPopUpGameObject = GameObject.FindWithTag(Tags.CommandPopUp);
+            if (commandPopUpGameObject)
+            {
+                commandPopUp = commandPopUpGameObject.GetComponent<CommandPopUp>();
+            }
+            else
+            {
+                Debug.LogError("No game object found with tag CommandPopUp, cannot set commandPopUp.");
+            }
         }
     }
 
     private void Start()
     {
+        // copy cached reference already set on SessionManager (at Awake time)
+        m_PlayerCharacterAnimator = SessionManager.Instance.playerCharacterAnimator;
+        
         HideCommandPopUp();
     }
 
@@ -89,17 +101,24 @@ public class ActivityManager : SingletonManager<ActivityManager>
 
     public void ShowCommandPopUp(ActivityData[] activityDataArray)
     {
-        m_CommandPopUp.ShowWithActivities(activityDataArray);
+        commandPopUp.ShowWithActivities(activityDataArray);
     }
     
     public void HideCommandPopUp()
     {
-        m_CommandPopUp.Hide();
+        commandPopUp.Hide();
     }
     
     public void StartActivity(int id)
     {
-        m_ActivityBehavioursMap[id].Execute();
+        ActivityBehaviour activityBehaviour = m_ActivityBehavioursMap[id];
+        
+        // play animation (it just shows the relevant pose mesh)
+        m_PlayerCharacterAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)activityBehaviour.data.characterPoseEnum);
+        
+        // execute gameplay effect
+        activityBehaviour.Execute();
+        
         HideCommandPopUp();
     }
 }

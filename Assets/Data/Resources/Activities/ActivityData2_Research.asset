@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 2
   activityName: Research
   description: Research material for your writing
+  characterPoseEnum: 8

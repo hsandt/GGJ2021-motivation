@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 10
   activityName: Leisure (smartphone)
   description: Watch an entertaining video or read a webcomic/novel on your smartphone.
+  characterPoseEnum: 2
