@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CommonsHelper;
 using UnityEngine;
 
-public class CharacterPose : MonoBehaviour
+public class MaterialAlphaFade : MonoBehaviour
 {
     [Tooltip("List of renderers for which material instances should be faded in/out during pose transitions")]
     public Renderer[] renderers;

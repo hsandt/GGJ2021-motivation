@@ -22,6 +22,9 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     [Tooltip("Player character animator: if not set, find object with tag, but doesn't work if object is inactive")]
     public Animator playerCharacterAnimator;
 
+    [Tooltip("Animator for items using in activities: if not set, find object with tag, but doesn't work if object is inactive")]
+    public Animator activityItemsAnimator;
+
     
     /* Cached external references */
 
@@ -58,6 +61,19 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
                 Debug.LogError("No game object found with tag Player, cannot set playerCharacterAnimator.");
             }
         }
+        
+        if (activityItemsAnimator == null)
+        {
+            GameObject activityItemsParent = GameObject.FindWithTag(Tags.ActivityItemsAnimator);
+            if (activityItemsParent)
+            {
+                activityItemsAnimator = activityItemsParent.GetComponent<Animator>();
+            }
+            else
+            {
+                Debug.LogError("No game object found with tag ActivityItemsAnimator, cannot set activityItemsAnimator.");
+            }
+        }
     }
 
     private void Start()
@@ -86,7 +102,10 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
         // track progress for Victory
         m_GameplayValuesContainer.writingProgress.RegisterObserver(this);
         
-        playerCharacterAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)CharacterPoseEnum.Idle);
+        // initialise multi-object animators so character starts working on desktop, with all activity items visible
+        // aesthetics note: items will fade in after scene load!
+        playerCharacterAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)CharacterPoseEnum.WorkingAtPCPosesV05);
+        activityItemsAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)CharacterPoseEnum.WorkingAtPCPosesV05);
     }
 
     private void SetupSessionDelayed()

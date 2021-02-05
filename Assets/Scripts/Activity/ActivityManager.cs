@@ -21,6 +21,7 @@ public class ActivityManager : SingletonManager<ActivityManager>
     /* Cached external references */
 
     public Animator m_PlayerCharacterAnimator;
+    public Animator m_ActivityItemsAnimator;
 
     
     /* External references with fallback */
@@ -66,8 +67,9 @@ public class ActivityManager : SingletonManager<ActivityManager>
 
     private void Start()
     {
-        // copy cached reference already set on SessionManager (at Awake time)
+        // copy cached references already set on SessionManager (at Awake time)
         m_PlayerCharacterAnimator = SessionManager.Instance.playerCharacterAnimator;
+        m_ActivityItemsAnimator = SessionManager.Instance.activityItemsAnimator;
         
         HideCommandPopUp();
     }
@@ -113,8 +115,9 @@ public class ActivityManager : SingletonManager<ActivityManager>
     {
         ActivityBehaviour activityBehaviour = m_ActivityBehavioursMap[id];
         
-        // play animation (it just shows the relevant pose mesh)
+        // play animation (it just shows the relevant pose mesh) and hide activity items already embedded in that character pose
         m_PlayerCharacterAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)activityBehaviour.data.characterPoseEnum);
+        m_ActivityItemsAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)activityBehaviour.data.characterPoseEnum);
         
         // execute gameplay effect
         activityBehaviour.Execute();

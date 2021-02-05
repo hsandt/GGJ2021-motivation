@@ -44,6 +44,10 @@ namespace UnityConstants
         /// Name of tag 'GameplayValuesContainer'.
         /// </summary>
         public const string GameplayValuesContainer = "GameplayValuesContainer";
+        /// <summary>
+        /// Name of tag 'ActivityItemsAnimator'.
+        /// </summary>
+        public const string ActivityItemsAnimator = "ActivityItemsAnimator";
     }
 
     public static class SortingLayers
@@ -76,6 +80,10 @@ namespace UnityConstants
         /// Index of layer 'UI'.
         /// </summary>
         public const int UI = 5;
+        /// <summary>
+        /// Index of layer 'Interactable'.
+        /// </summary>
+        public const int Interactable = 6;
 
         /// <summary>
         /// Bitmask of layer 'Default'.
@@ -97,19 +105,28 @@ namespace UnityConstants
         /// Bitmask of layer 'UI'.
         /// </summary>
         public const int UIMask = 1 << 5;
+        /// <summary>
+        /// Bitmask of layer 'Interactable'.
+        /// </summary>
+        public const int InteractableMask = 1 << 6;
     }
 
     public static class Scenes
     {
         /// <summary>
-        /// ID of scene 'Proto_GameLoop'.
+        /// ID of scene 'Menu'.
         /// </summary>
-        public const int Proto_GameLoop = 0;
+        public const int Menu = 0;
+        /// <summary>
+        /// ID of scene 'Room'.
+        /// </summary>
+        public const int Room = 1;
     }
 
     public enum ScenesEnum
     {
-        Proto_GameLoop = 0,
+        Menu = 0,
+        Room = 1,
     }
 
     public static class Axes
