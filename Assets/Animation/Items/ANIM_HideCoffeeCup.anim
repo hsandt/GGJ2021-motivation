@@ -71,7 +71,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: alpha
-    path: Phone
+    path: Smartphone
     classID: 114
     script: {fileID: 11500000, guid: be561da7034fc9cdca70c6b922e76796, type: 3}
   m_PPtrCurves: []
@@ -97,7 +97,7 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2240723161
+      path: 1777171966
       attribute: 3504355690
       script: {fileID: 11500000, guid: be561da7034fc9cdca70c6b922e76796, type: 3}
       typeID: 114
@@ -179,7 +179,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: alpha
-    path: Phone
+    path: Smartphone
     classID: 114
     script: {fileID: 11500000, guid: be561da7034fc9cdca70c6b922e76796, type: 3}
   m_EulerEditorCurves: []
