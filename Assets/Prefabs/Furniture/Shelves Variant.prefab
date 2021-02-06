@@ -107,7 +107,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelves
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1597394012, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
 --- !u!4 &5218818846634442615 stripped
 Transform:
