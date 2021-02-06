@@ -137,6 +137,14 @@ PrefabInstance:
       propertyPath: meshRenderer
       value: 
       objectReference: {fileID: 2972456336733158759}
+    - target: {fileID: 6940688089137282475, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
+      propertyPath: activityDataArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940688089137282475, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
+      propertyPath: activityDataArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b802f1326ae866921890e09ce53a51bd, type: 2}
     - target: {fileID: 6940688089137282486, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
       propertyPath: m_Name
       value: Bin
