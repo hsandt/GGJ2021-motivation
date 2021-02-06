@@ -124,4 +124,9 @@ public class ActivityManager : SingletonManager<ActivityManager>
         
         HideCommandPopUp();
     }
+
+    public void OnActivityTransitionEnd()
+    {
+        
+    }
 }
