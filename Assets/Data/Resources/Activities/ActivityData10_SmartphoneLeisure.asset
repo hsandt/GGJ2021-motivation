@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Leisure (smartphone)
   description: Watch an entertaining video or read a webcomic/novel on your smartphone.
   characterPoseEnum: 2
+  sfx: {fileID: 8300000, guid: 5211343edc1c3b9e38b40729bbc97f5c, type: 3}

@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Feedback (editor)
   description: Ask feedback to your editor. She's pretty strict!
   characterPoseEnum: 3
+  sfx: {fileID: 8300000, guid: 91776ce35a46c09449012395dcd49502, type: 3}

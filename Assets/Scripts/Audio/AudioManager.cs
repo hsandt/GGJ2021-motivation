@@ -66,6 +66,8 @@ public class AudioManager : SingletonManager<AudioManager>, IGameplayValueObserv
 
     public void PlaySFX(AudioClip sfx)
     {
+        // stop any previous SFX (otherwise they can overlap)
+        sfxAudioSource.Stop();
         sfxAudioSource.PlayOneShot(sfx);
     }
 

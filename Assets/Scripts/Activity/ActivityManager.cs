@@ -119,6 +119,12 @@ public class ActivityManager : SingletonManager<ActivityManager>
         m_PlayerCharacterAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)activityBehaviour.data.characterPoseEnum);
         m_ActivityItemsAnimator.SetInteger(AnimatorParameters.poseIndexHash, (int)activityBehaviour.data.characterPoseEnum);
         
+        // play SFX if any
+        if (activityBehaviour.data.sfx)
+        {
+            AudioManager.Instance.PlaySFX(activityBehaviour.data.sfx);
+        }
+        
         // execute gameplay effect
         activityBehaviour.Execute();
         

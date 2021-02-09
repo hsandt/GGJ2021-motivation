@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Garbage
   description: Put the garbage bin out. A critical task after some time has passed!
   characterPoseEnum: 7
+  sfx: {fileID: 8300000, guid: 8794dc616b68fc67797900f732d09bf9, type: 3}

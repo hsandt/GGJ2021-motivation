@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Fresh air
   description: Get some fresh air at the local window
   characterPoseEnum: 6
+  sfx: {fileID: 0}

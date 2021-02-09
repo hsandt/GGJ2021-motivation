@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Write novel
   description: Progress in writing your short story
   characterPoseEnum: 8
+  sfx: {fileID: 0}

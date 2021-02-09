@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Drink
   description: Have a drink sitting quietly at your desk
   characterPoseEnum: 1
+  sfx: {fileID: 8300000, guid: de2edd1d8bf6f1b91a1db47581c09382, type: 3}

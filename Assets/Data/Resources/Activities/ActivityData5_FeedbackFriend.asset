@@ -16,3 +16,4 @@ MonoBehaviour:
   activityName: Feedback (friend)
   description: Ask feedback to your friend. They are cool, but will spot weird issues.
   characterPoseEnum: 3
+  sfx: {fileID: 8300000, guid: 91776ce35a46c09449012395dcd49502, type: 3}

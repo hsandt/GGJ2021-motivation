@@ -19,5 +19,8 @@ public class ActivityData : ScriptableObject
     [Tooltip("Character pose to show during activity")]
     public CharacterPoseEnum characterPoseEnum = CharacterPoseEnum.Idle;
 
+    [Tooltip("(Optional) SFX to play on activity start")]
+    public AudioClip sfx;
+
 }
 
