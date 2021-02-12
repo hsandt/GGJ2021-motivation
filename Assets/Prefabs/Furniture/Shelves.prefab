@@ -97,12 +97,16 @@ PrefabInstance:
       objectReference: {fileID: 4611451538930014003}
     - target: {fileID: 6940688089137282475, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
       propertyPath: activityDataArray.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6940688089137282475, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
       propertyPath: activityDataArray.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 18a0fcfbd84be7a378acc5b2d5ebd28b, type: 2}
+    - target: {fileID: 6940688089137282475, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
+      propertyPath: activityDataArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 72461bb546a406e6ca824f6906b6cb5e, type: 2}
     - target: {fileID: 6940688089137282486, guid: 90d6a4fc973df750aab9bc7292737771, type: 3}
       propertyPath: m_Name
       value: Shelves

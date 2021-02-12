@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 535cc182fd48fbbc7a6cc5474e33e71f, type: 3}
-  m_Name: ActivityData7_Drink
+  m_Name: ActivityData7_SnackAndDrink
   m_EditorClassIdentifier: 
   id: 7
-  activityName: Drink
-  description: Have a drink sitting quietly at your desk
+  activityName: Snack
+  description: Have a little snack and drink, sitting quietly at your desk
   characterPoseEnum: 1
   sfx: {fileID: 8300000, guid: de2edd1d8bf6f1b91a1db47581c09382, type: 3}
