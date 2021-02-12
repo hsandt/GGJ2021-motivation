@@ -9,7 +9,7 @@ public class FurnitureCommandController : MonoBehaviour
     [Tooltip("Hover Material")]
     public Material hoverMaterial;
 
-    private Material m_OriginalMaterial;
+    private Material m_OriginalMaterial = null;
 
     
     [Header("Children references")]
@@ -24,12 +24,6 @@ public class FurnitureCommandController : MonoBehaviour
     public ActivityData[] activityDataArray;
 
 
-    private void Awake()
-    {
-        m_OriginalMaterial = meshRenderer.material;
-    }
-
-
     // OnPointerClick callback
     public void ShowCommandPopUpForAvailableActivities()
     {
@@ -39,12 +33,22 @@ public class FurnitureCommandController : MonoBehaviour
     // OnPointerEnter callback
     public void OnFurniturePointerEnter()
     {
+        // store original material to restore it after hover
+        // this only works if there is no way for base material to change
+        // while still hovering, and it should be the case
+        // (the only way to change base material should be to start an activity
+        // causing a fading transition with alpha material, and interactions
+        // should be prevented during that time)
+        m_OriginalMaterial = meshRenderer.material;
         meshRenderer.material = hoverMaterial;
     }
     
     // OnPointerExit callback
     public void OnFurniturePointerExit()
     {
-        meshRenderer.material = m_OriginalMaterial;
+        if (m_OriginalMaterial)
+        {
+            meshRenderer.material = m_OriginalMaterial;
+        }
     }
 }
