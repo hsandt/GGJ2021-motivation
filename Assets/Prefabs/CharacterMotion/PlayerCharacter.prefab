@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f418619e515eb6e398cd6279b2addcc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialOpaque: {fileID: 0}
-  materialTransparent: {fileID: 0}
+  materialOpaque: {fileID: 2100000, guid: e3e154bb947f72df58d3bc9b38d7eb26, type: 2}
+  materialTransparent: {fileID: 2100000, guid: 4d5d4c32c992c9f6cb9cc6d5097d1523, type: 2}
   alpha: 0
 --- !u!114 &584753809
 MonoBehaviour:
