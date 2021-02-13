@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData10_SmartphoneLeisure
   m_EditorClassIdentifier: 
   id: 10
+  lockedOnStart: 1
   activityName: Leisure (smartphone)
   description: Watch an entertaining video or read a webcomic/novel on your smartphone.
   characterPoseEnum: 2

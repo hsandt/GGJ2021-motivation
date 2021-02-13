@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData7_SnackAndDrink
   m_EditorClassIdentifier: 
   id: 7
+  lockedOnStart: 1
   activityName: Snack
   description: Have a little snack and drink, sitting quietly at your desk
   characterPoseEnum: 1

@@ -46,7 +46,9 @@ public class ActivityManager : SingletonManager<ActivityManager>
             if (!m_ActivityBehavioursMap.ContainsKey(activityData.id))
             {
                 Debug.LogErrorFormat(activityData, "m_ActivityBehavioursMap has not key {0}, " +
-                    "which means activity data with this ID has no matching behaviour.",
+                    "which means activity data with this ID has no matching behaviour. Make sure to add " +
+                    "any new Activity as a GameObject with a child ActivityBehaviour component to Activities object " +
+                    "(tagged with Activities)",
                     activityData.id);
             }
         }

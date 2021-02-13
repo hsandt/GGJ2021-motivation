@@ -6,6 +6,7 @@ using CommonsHelper;
 using CommonsPattern;
 using UnityConstants;
 
+using SessionGameplayValue = GameplayValue<SessionGameplayValueType>;
 using ChapterGameplayValue = GameplayValue<ChapterGameplayValueType>;
 
 public class SessionManager : SingletonManager<SessionManager>, IGameplayValueObserver
@@ -48,6 +49,11 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     private int m_CurrentChapterIndex;
     public int CurrentChapterIndex => m_CurrentChapterIndex;
 
+    public SessionGameplayValue GetSessionGameplayValue(SessionGameplayValueType type)
+    {
+        return m_GameplayValuesContainer.GetSessionGameplayValue(type);
+    }
+    
     public ChapterGameplayValue GetCurrentChapterGameplayValue(ChapterGameplayValueType type)
     {
         return m_GameplayValuesContainer.GetChapterGameplayValue(m_CurrentChapterIndex, type);

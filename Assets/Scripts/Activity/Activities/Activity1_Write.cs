@@ -8,7 +8,8 @@ public class Activity1_Write : ActivityBehaviour
     {
         Debug.Log("Write");
         
-        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(-5f);
-        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(10f);
+        ChangeSessionGameplayValue(SessionGameplayValueType.Time, 5f);
+        ChangeSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, -5f);
+        ChangeCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress, 5f);
     }
 }

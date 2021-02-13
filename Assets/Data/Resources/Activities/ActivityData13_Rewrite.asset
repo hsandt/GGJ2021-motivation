@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData13_Rewrite
   m_EditorClassIdentifier: 
   id: 13
+  lockedOnStart: 1
   activityName: Rewrite parts
   description: Improve on your story by rewriting some parts. More efficient after
     feedback.

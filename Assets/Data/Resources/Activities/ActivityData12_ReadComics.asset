@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData12_ReadComics
   m_EditorClassIdentifier: 
   id: 12
+  lockedOnStart: 1
   activityName: Read comics
   description: Read some comics to chill out
   characterPoseEnum: 4

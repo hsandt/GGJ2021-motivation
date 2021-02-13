@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData6_FeedbackFamily
   m_EditorClassIdentifier: 
   id: 6
+  lockedOnStart: 1
   activityName: Feedback (family)
   description: Ask feedback to your family. They mostly encourage you.
   characterPoseEnum: 3

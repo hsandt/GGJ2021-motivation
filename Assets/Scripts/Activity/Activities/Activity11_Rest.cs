@@ -8,7 +8,6 @@ public class Activity11_Rest : ActivityBehaviour
     {
         Debug.Log("Rest");
         
-        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(20f);
-        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(0f);
+        ChangeSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, 20f);
     }
 }

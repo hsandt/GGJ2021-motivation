@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData8_Garbage
   m_EditorClassIdentifier: 
   id: 8
+  lockedOnStart: 1
   activityName: Garbage
   description: Put the garbage bin out. A critical task after some time has passed!
   characterPoseEnum: 7

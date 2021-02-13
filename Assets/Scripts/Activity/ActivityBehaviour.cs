@@ -15,6 +15,15 @@ public abstract class ActivityBehaviour : MonoBehaviour
 
     protected GameplayValuesContainer m_GameplayValuesContainer;
 
+    protected void ChangeSessionGameplayValue(SessionGameplayValueType type, float deltaValue)
+    {
+        SessionManager.Instance.GetSessionGameplayValue(type).ChangeValue(deltaValue);
+    }
+
+    protected void ChangeCurrentChapterGameplayValue(ChapterGameplayValueType type, float deltaValue)
+    {
+        SessionManager.Instance.GetCurrentChapterGameplayValue(type).ChangeValue(deltaValue);
+    }
     
     private void Start()
     {
