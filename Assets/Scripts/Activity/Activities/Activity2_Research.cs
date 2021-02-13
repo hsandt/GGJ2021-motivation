@@ -8,8 +8,8 @@ public class Activity2_Research : ActivityBehaviour
     {
         Debug.Log("Research");
         
-        AdvanceSessionGameplayValue(SessionGameplayValueType.Time, 10f);
-        AdvanceSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, -5f);
-        AdvanceSessionGameplayValue(SessionGameplayValueType.ResearchMaterial, 5f);
+        AdvanceSessionValue(SessionGameplayValueType.Time, 10f);
+        AdvanceSessionValue(SessionGameplayValueType.PhysicalHealth, -5f);
+        AdvanceSessionValue(SessionGameplayValueType.ResearchMaterial, 5f);
     }
 }

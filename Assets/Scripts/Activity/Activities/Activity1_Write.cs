@@ -7,11 +7,11 @@ public class Activity1_Write : ActivityBehaviour
     public override void Execute()
     {        
         // required resources
-        float writingPower = 0f;
-        writingPower += AdvanceSessionGameplayValue(SessionGameplayValueType.Time, 20f);
-        writingPower += ConsumeSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, 5f);
+        float power = 0f;
+        power += balance.writeTimePowerFactor * AdvanceSessionValue(SessionGameplayValueType.Time, balance.writeTimeAdvance);
+        power += balance.writePhysicalHealthPowerFactor * ConsumeSessionValue(SessionGameplayValueType.PhysicalHealth, balance.writePhysicalHealthConsumption);
         
-        float advance = AdvanceCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress, writingPower);
+        float advance = AdvanceCurrentChapterValue(ChapterGameplayValueType.WritingProgress, power);
         Debug.LogFormat("Write: +{0}", advance);
     }
 }

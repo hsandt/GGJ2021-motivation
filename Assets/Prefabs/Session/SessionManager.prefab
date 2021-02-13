@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultySetting: {fileID: 11400000, guid: ee5e41554c626806eb140e62cd31ae76, type: 2}
+  activityBalance: {fileID: 11400000, guid: dee4a994fa4d5977ba0c3afc66d66c3a, type: 2}
   pauseMenu: {fileID: 0}
+  playerCharacterAnimator: {fileID: 0}
+  activityItemsAnimator: {fileID: 0}

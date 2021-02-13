@@ -1522,6 +1522,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51c1d635efb13b74ca5dc2350265df9e, type: 3}
   m_PrefabInstance: {fileID: 500661637}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &542491447 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7133907861640421215, guid: 877a76df0b70bd492be63bae8540b541, type: 3}
+  m_PrefabInstance: {fileID: 1784500658459993816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &584192428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1997535019290681111, guid: 4a85022080c6632ffa2d97062463f86b, type: 3}
@@ -2374,6 +2379,14 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 2202778276571563908}
+    - target: {fileID: 6304826457340939227, guid: 7273c3fbd6f356b26be09a8af0103e5b, type: 3}
+      propertyPath: activityItemsAnimator
+      value: 
+      objectReference: {fileID: 598497365}
+    - target: {fileID: 6304826457340939227, guid: 7273c3fbd6f356b26be09a8af0103e5b, type: 3}
+      propertyPath: playerCharacterAnimator
+      value: 
+      objectReference: {fileID: 542491447}
     - target: {fileID: 6304826457340939228, guid: 7273c3fbd6f356b26be09a8af0103e5b, type: 3}
       propertyPath: m_RootOrder
       value: 1

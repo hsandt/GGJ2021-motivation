@@ -16,6 +16,9 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     [Tooltip("Difficulty setting to use for this session")]
     public DifficultySetting difficultySetting;
 
+    [Tooltip("Activity game balance data")]
+    public ActivityBalance activityBalance;
+
     
     [Header("External references")]
 
