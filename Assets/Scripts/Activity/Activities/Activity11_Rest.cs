@@ -8,7 +8,7 @@ public class Activity11_Rest : ActivityBehaviour
     {
         Debug.Log("Rest");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(20f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(20f);
+        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(0f);
     }
 }

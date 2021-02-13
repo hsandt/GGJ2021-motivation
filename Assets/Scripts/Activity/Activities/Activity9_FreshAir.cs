@@ -8,7 +8,7 @@ public class Activity9_FreshAir : ActivityBehaviour
     {
         Debug.Log("FreshAir");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(10f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(10f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(10f);
+        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(10f);
     }
 }

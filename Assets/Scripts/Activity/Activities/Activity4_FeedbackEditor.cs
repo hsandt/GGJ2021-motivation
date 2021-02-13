@@ -8,7 +8,7 @@ public class Activity4_FeedbackEditor : ActivityBehaviour
     {
         Debug.Log("FeedbackEditor");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(-10f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(-10f);
+        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(0f);
     }
 }

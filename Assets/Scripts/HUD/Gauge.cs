@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Gauge : MonoBehaviour, IGameplayValueObserver
+public abstract class Gauge<TGameplayValueType> : MonoBehaviour, IGameplayValueObserver
 {
     [Header("External references")]
 
-    [Tooltip("Gameplay value represented by the gauge")]
-    public GameplayValue trackedGameplayValue;
+    [SerializeField, Tooltip("Type of gameplay value represented by the gauge")]
+    protected TGameplayValueType m_TrackedGameplayValueType;
+    
+    // Tracked gameplay value, deducated from m_TrackedGameplayValueType, with accessor defined in child class
+    private GameplayValue<TGameplayValueType> m_TrackedGameplayValue;
 
     
     [Header("Child references")]
@@ -17,34 +20,37 @@ public class Gauge : MonoBehaviour, IGameplayValueObserver
     public RectTransform fillRectTransform;
 
     [Tooltip("Value Name Widget")]
-    public TextMeshProUGUI valeNameWidget;
+    public TextMeshProUGUI valueNameWidget;
 
     [Tooltip("Value Text Widget")]
     public TextMeshProUGUI valueTextWidget;
 
+
+    protected abstract GameplayValue<TGameplayValueType> GetTrackedGameplayValue();
     
-    private void Awake()
+    private void Start()
     {
-        trackedGameplayValue.RegisterObserver(this);
-        valeNameWidget.text = trackedGameplayValue.ValueName;
+        // get tracked gameplay value on Start, as they are now constructed on Awake via SessionManager.Init
+        m_TrackedGameplayValue = GetTrackedGameplayValue();
         
+        m_TrackedGameplayValue.RegisterObserver(this);
+        valueNameWidget.text = m_TrackedGameplayValue.Data.valueName;
+        
+        // refresh immediately as we have missed the first value change GameplayValuesContainer.CreateGameplayValueArrays
         RefreshGaugeFillSize();
     }
 
     private void OnDestroy()
     {
-        if (trackedGameplayValue)
-        {
-            trackedGameplayValue.UnregisterObserver(this);
-        }
+        m_TrackedGameplayValue?.UnregisterObserver(this);
     }
 
     private void RefreshGaugeFillSize()
     {
         // 25.6 -> "25"
-        valueTextWidget.text = trackedGameplayValue.CurrentValue.ToString("0");
+        valueTextWidget.text = m_TrackedGameplayValue.CurrentValue.ToString("0");
         
-        fillRectTransform.anchorMax = new Vector2(trackedGameplayValue.GetRatio(), 1f);
+        fillRectTransform.anchorMax = new Vector2(m_TrackedGameplayValue.GetRatio(), 1f);
     }
 
     public void NotifyValueChange()
