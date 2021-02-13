@@ -8,6 +8,6 @@ public class Activity11_Rest : ActivityBehaviour
     {
         Debug.Log("Rest");
         
-        ChangeSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, 20f);
+        AdvanceSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, 20f);
     }
 }

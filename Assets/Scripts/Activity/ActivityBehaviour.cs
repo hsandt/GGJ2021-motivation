@@ -15,14 +15,28 @@ public abstract class ActivityBehaviour : MonoBehaviour
 
     protected GameplayValuesContainer m_GameplayValuesContainer;
 
-    protected void ChangeSessionGameplayValue(SessionGameplayValueType type, float deltaValue)
+    /// Advance session value and return actual advance (clamped if value reached max)
+    protected float AdvanceSessionGameplayValue(SessionGameplayValueType type, float deltaValue)
     {
-        SessionManager.Instance.GetSessionGameplayValue(type).ChangeValue(deltaValue);
+        return SessionManager.Instance.GetSessionGameplayValue(type).AdvanceValue(deltaValue);
     }
 
-    protected void ChangeCurrentChapterGameplayValue(ChapterGameplayValueType type, float deltaValue)
+    /// Consume session value and return actual consumption (clamped if value reached 0)
+    protected float ConsumeSessionGameplayValue(SessionGameplayValueType type, float consumptionValue)
     {
-        SessionManager.Instance.GetCurrentChapterGameplayValue(type).ChangeValue(deltaValue);
+        return SessionManager.Instance.GetSessionGameplayValue(type).ConsumeValue(consumptionValue);
+    }
+
+    /// Advance chapter value and return actual advance (clamped if value reached max)
+    protected float AdvanceCurrentChapterGameplayValue(ChapterGameplayValueType type, float deltaValue)
+    {
+        return SessionManager.Instance.GetCurrentChapterGameplayValue(type).AdvanceValue(deltaValue);
+    }
+    
+    /// Consume current chapter value and return actual consumption (clamped if value reached 0)
+    protected float ConsumeCurrentChapterGameplayValue(ChapterGameplayValueType type, float deltaValue)
+    {
+        return SessionManager.Instance.GetCurrentChapterGameplayValue(type).ConsumeValue(deltaValue);
     }
     
     private void Start()

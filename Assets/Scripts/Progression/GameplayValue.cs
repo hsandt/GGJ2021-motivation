@@ -48,6 +48,22 @@ public class GameplayValue<TGameplayValueType>
         // pass negative deltaValue to decrease
         SetValue(m_CurrentValue + deltaValue);
     }
+    
+    /// Advance session value and return actual advance (clamped via ChangeValue if value reached max)
+    public float AdvanceValue(float deltaValue)
+    {
+        float oldValue = m_CurrentValue;
+        ChangeValue(deltaValue);
+        return m_CurrentValue - oldValue;
+    }
+
+    /// Consume value and return actual consumption (clamped via ChangeValue if value reached 0)
+    public float ConsumeValue(float consumptionValue)
+    {
+        float oldValue = m_CurrentValue;
+        ChangeValue(- consumptionValue);
+        return oldValue - m_CurrentValue;
+    }
 
     public float GetRatio()
     {

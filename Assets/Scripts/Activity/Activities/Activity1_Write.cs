@@ -5,11 +5,13 @@ using UnityEngine;
 public class Activity1_Write : ActivityBehaviour
 {
     public override void Execute()
-    {
-        Debug.Log("Write");
+    {        
+        // required resources
+        float writingPower = 0f;
+        writingPower += AdvanceSessionGameplayValue(SessionGameplayValueType.Time, 20f);
+        writingPower += ConsumeSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, 5f);
         
-        ChangeSessionGameplayValue(SessionGameplayValueType.Time, 5f);
-        ChangeSessionGameplayValue(SessionGameplayValueType.PhysicalHealth, -5f);
-        ChangeCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress, 5f);
+        float advance = AdvanceCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress, writingPower);
+        Debug.LogFormat("Write: +{0}", advance);
     }
 }
