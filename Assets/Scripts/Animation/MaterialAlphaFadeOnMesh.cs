@@ -55,7 +55,7 @@ public class MaterialAlphaFadeOnMesh : MonoBehaviour
     {
         if (alpha < 1f)
         {
-            if (m_MaterialAlpha >= 1f)
+            if (m_Renderer.material != materialTransparent)
             {
                 // we were opaque, switch to transparent material
                 m_Renderer.material = materialTransparent;
@@ -68,7 +68,7 @@ public class MaterialAlphaFadeOnMesh : MonoBehaviour
             // the shared asset
             m_Renderer.material.color = m_Renderer.material.color.ToAlpha(alpha);
         }
-        else if (m_MaterialAlpha < 1f)
+        else if (m_Renderer.material != materialOpaque)
         {
             // we were transparent, switch to opaque material
             // no need to change color, opaque material always keeps color with alpha = 1
