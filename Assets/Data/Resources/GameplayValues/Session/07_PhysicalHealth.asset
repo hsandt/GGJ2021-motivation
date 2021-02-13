@@ -16,5 +16,5 @@ MonoBehaviour:
   valueName: Physical health
   description: Body condition. Decreases when you overdo it, recovers with rest.
   parameterPerDifficultyLevel:
-  - initialValue: 0
+  - initialValue: 50
     maxValue: 100
