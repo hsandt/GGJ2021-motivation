@@ -6,8 +6,7 @@ public class Activity11_Rest : ActivityBehaviour
 {
     public override void Execute()
     {
-        float timeSpent = AdvanceSessionValue(SessionGameplayValueType.Time, balance.restTimeAdvance);
-        float timeSpentRatio = timeSpent / balance.restTimeAdvance;
+        float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.restTimeAdvance);
 
         float physicalHealthIncrease = balance.restPhysicalHealthIncrease * timeSpentRatio;
         float mentalHealthIncrease = balance.restMentalHealthIncrease * timeSpentRatio;

@@ -6,14 +6,18 @@ public class Activity1_Write : ActivityBehaviour
 {
     public override void Execute()
     {
-        float timeSpent = AdvanceSessionValue(SessionGameplayValueType.Time, balance.writeTimeAdvance);
-        float timeSpentRatio = timeSpent / balance.writeTimeAdvance;
+        float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.writeTimeAdvance);
 
-        float physicalHealthSpent = ConsumeSessionValue(SessionGameplayValueType.PhysicalHealth, timeSpentRatio * balance.writePhysicalHealthConsumption);
+        float physicalHealthSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
+            SessionGameplayValueType.PhysicalHealth, balance.writePhysicalHealthConsumption, timeSpentRatio);
+
+        float researchMaterialSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
+            SessionGameplayValueType.ResearchMaterial, balance.writeResearchMaterialConsumption, timeSpentRatio);
 
         float increase = 0f;
         increase += balance.writeBaseProgressIncrease * timeSpentRatio;
-        increase += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpent;
+        increase += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpentRatio;
+        increase += balance.writeResearchMaterialExtraProgressIncrease * researchMaterialSpentRatio;
         
         float advance = AdvanceCurrentChapterValue(ChapterGameplayValueType.WritingProgress, increase);
         Debug.LogFormat("Write: Write Progress +{0}", advance);

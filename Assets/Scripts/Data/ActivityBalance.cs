@@ -15,11 +15,17 @@ public class ActivityBalance : ScriptableObject
     [Tooltip("Base Write Progress gain when doing full Write")]
     public float writeBaseProgressIncrease = 10f;
     
-    [Tooltip("Physical Health loss when doing full Write")]
+    [Tooltip("Physical Health standard consumption when doing full Write")]
     public float writePhysicalHealthConsumption = 5f;
     
-    [Tooltip("Additional Write Progress gain when fully consuming Physical Health")]
-    public float writePhysicalHealthExtraProgressIncrease = 1f;
+    [Tooltip("Additional Write Progress gain when consuming standard Physical Health")]
+    public float writePhysicalHealthExtraProgressIncrease = 5f;
+    
+    [Tooltip("Research Material standard consumption when doing full Write")]
+    public float writeResearchMaterialConsumption = 10f;
+    
+    [Tooltip("Additional Write Progress gain when consuming standard Research Material")]
+    public float writeResearchMaterialExtraProgressIncrease = 10f;
     
     
     [Header("Research")]
@@ -34,7 +40,7 @@ public class ActivityBalance : ScriptableObject
     public float researchPhysicalHealthConsumption = 5f;
     
     [Tooltip("Additional Research Material gain when fully consuming Physical Health")]
-    public float researchPhysicalHealthExtraMaterialIncrease = 1f;
+    public float researchPhysicalHealthExtraMaterialIncrease = 5f;
     
     
     [Header("Rest")]

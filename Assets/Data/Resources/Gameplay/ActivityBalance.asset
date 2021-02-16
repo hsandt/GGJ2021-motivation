@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ed097e40a0247e491bc733506820204, type: 3}
-  m_Name: ActivityBalance
+  m_Name: 
   m_EditorClassIdentifier: 
   writeTimeAdvance: 20
   writeBaseProgressIncrease: 10
   writePhysicalHealthConsumption: 5
-  writePhysicalHealthExtraProgressIncrease: 1
+  writePhysicalHealthExtraProgressIncrease: 5
+  writeResearchMaterialConsumption: 10
+  writeResearchMaterialExtraProgressIncrease: 10
   researchTimeAdvance: 20
   researchBaseMaterialIncrease: 10
   researchPhysicalHealthConsumption: 5
-  researchPhysicalHealthExtraMaterialIncrease: 1
+  researchPhysicalHealthExtraMaterialIncrease: 5
   restTimeAdvance: 20
   restPhysicalHealthIncrease: 20
   restMentalHealthIncrease: 5
