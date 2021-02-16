@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: ActivityBalance
   m_EditorClassIdentifier: 
   writeTimeAdvance: 20
-  writeTimePowerFactor: 1
+  writeBaseProgressIncrease: 10
   writePhysicalHealthConsumption: 5
-  writePhysicalHealthPowerFactor: 1
+  writePhysicalHealthExtraProgressIncrease: 1
+  researchTimeAdvance: 20
+  researchBaseMaterialIncrease: 10
+  researchPhysicalHealthConsumption: 5
+  researchPhysicalHealthExtraMaterialIncrease: 1
+  restTimeAdvance: 20
+  restPhysicalHealthIncrease: 20
+  restMentalHealthIncrease: 5

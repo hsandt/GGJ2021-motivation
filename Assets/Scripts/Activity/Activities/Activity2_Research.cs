@@ -6,10 +6,16 @@ public class Activity2_Research : ActivityBehaviour
 {
     public override void Execute()
     {
-        Debug.Log("Research");
+        float timeSpent = AdvanceSessionValue(SessionGameplayValueType.Time, balance.researchTimeAdvance);
+        float timeSpentRatio = timeSpent / balance.researchTimeAdvance;
+
+        float physicalHealthSpent = ConsumeSessionValue(SessionGameplayValueType.PhysicalHealth, timeSpentRatio * balance.researchPhysicalHealthConsumption);
+
+        float increase = 0f;
+        increase += balance.researchBaseMaterialIncrease * timeSpentRatio;
+        increase += balance.researchPhysicalHealthExtraMaterialIncrease * physicalHealthSpent;
         
-        AdvanceSessionValue(SessionGameplayValueType.Time, 10f);
-        AdvanceSessionValue(SessionGameplayValueType.PhysicalHealth, -5f);
-        AdvanceSessionValue(SessionGameplayValueType.ResearchMaterial, 5f);
+        float advance = AdvanceSessionValue(SessionGameplayValueType.ResearchMaterial, increase);
+        Debug.LogFormat("Research: Research Material +{0}", advance);
     }
 }
