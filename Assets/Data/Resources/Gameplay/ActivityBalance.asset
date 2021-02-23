@@ -17,7 +17,7 @@ MonoBehaviour:
   writePhysicalHealthConsumption: 5
   writePhysicalHealthExtraProgressIncrease: 5
   writeResearchMaterialConsumption: 10
-  writeResearchMaterialExtraProgressIncrease: 10
+  writeResearchMaterialExtraProgressIncrease: 20
   researchTimeAdvance: 20
   researchBaseMaterialIncrease: 10
   researchPhysicalHealthConsumption: 5
