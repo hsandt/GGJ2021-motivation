@@ -17,4 +17,4 @@ MonoBehaviour:
   description: Time advancing toward the deadline. Increases with each activity.
   parameterPerDifficultyLevel:
   - initialValue: 0
-    maxValue: 100
+    maxValue: 12
