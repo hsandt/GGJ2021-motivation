@@ -7,6 +7,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ActivityBalance", menuName = "Data/Activity Balance", order = 8)]
 public class ActivityBalance : ScriptableObject
 {
+    [Header("Common")]
+    
+    [Tooltip("Threshold under which Physical Health is considered Low (threshold is included in Low range)")]
+    public float physicalHealthLowThreshold = 15f;
+
+    [Tooltip("When in Low Physical Health, this penalty factor is applied to non-resting activities' output resources")]
+    public float lowPhysicalHealthProgressPenaltyFactor = 0.5f;
+
+    
     [Header("Write")]
     
     [Tooltip("Time spent by Write")]

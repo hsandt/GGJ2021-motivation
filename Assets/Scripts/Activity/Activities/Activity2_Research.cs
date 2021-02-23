@@ -6,6 +6,8 @@ public class Activity2_Research : ActivityBehaviour
 {
     public override void Execute()
     {
+        float physicalHealthProgressMultiplier = GetPhysicalHealthProgressMultiplier();
+
         float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.researchTimeAdvance);
 
         float physicalHealthSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
@@ -15,6 +17,8 @@ public class Activity2_Research : ActivityBehaviour
         increase += balance.researchBaseMaterialIncrease * timeSpentRatio;
         increase += balance.researchPhysicalHealthExtraMaterialIncrease * physicalHealthSpentRatio;
         
+        increase *= physicalHealthProgressMultiplier;
+
         float advance = AdvanceSessionValue(SessionGameplayValueType.ResearchMaterial, increase);
         Debug.LogFormat("Research: Research Material +{0}", advance);
     }
