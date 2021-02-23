@@ -15,7 +15,8 @@ public class GameplayValue<TGameplayValueType>
     
     /// Max value
     private float m_MaxValue;
-    
+    public float MaxValue => m_MaxValue;
+
     
     /* State */
 

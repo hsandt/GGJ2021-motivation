@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,6 +26,12 @@ public abstract class Gauge<TGameplayValueType> : MonoBehaviour, IGameplayValueO
     [Tooltip("Value Text Widget")]
     public TextMeshProUGUI valueTextWidget;
 
+    
+    [Header("Parameters")]
+    
+    [Tooltip("Should the value be represented as a percentage? (with % symbol)")]
+    public bool isPercentage = false;
+
 
     protected abstract GameplayValue<TGameplayValueType> GetTrackedGameplayValue();
     
@@ -48,7 +55,16 @@ public abstract class Gauge<TGameplayValueType> : MonoBehaviour, IGameplayValueO
     private void RefreshGaugeFillSize()
     {
         // 25.6 -> "25"
-        valueTextWidget.text = m_TrackedGameplayValue.CurrentValue.ToString("0");
+        string valueText = m_TrackedGameplayValue.CurrentValue.ToString("0");
+        if (isPercentage)
+        {
+            valueText += "%";
+        }
+        else
+        {
+            valueText += $"/{m_TrackedGameplayValue.MaxValue}";
+        }
+        valueTextWidget.text = valueText;
         
         fillRectTransform.anchorMax = new Vector2(m_TrackedGameplayValue.GetRatio(), 1f);
     }
