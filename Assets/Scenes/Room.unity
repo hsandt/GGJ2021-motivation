@@ -1604,6 +1604,14 @@ PrefabInstance:
       propertyPath: commandPopUp
       value: 
       objectReference: {fileID: 1139073785}
+    - target: {fileID: 3085940842239777324, guid: e0a78c3754dcafa77944e6bf5ede1966, type: 3}
+      propertyPath: m_ActivityItemsAnimator
+      value: 
+      objectReference: {fileID: 598497365}
+    - target: {fileID: 3085940842239777324, guid: e0a78c3754dcafa77944e6bf5ede1966, type: 3}
+      propertyPath: m_PlayerCharacterAnimator
+      value: 
+      objectReference: {fileID: 542491447}
     - target: {fileID: 3085940842239777325, guid: e0a78c3754dcafa77944e6bf5ede1966, type: 3}
       propertyPath: m_RootOrder
       value: 3
