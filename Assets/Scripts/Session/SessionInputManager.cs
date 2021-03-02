@@ -6,6 +6,15 @@ public class SessionInputManager : MonoBehaviour
 {
     private void OnTogglePause()
     {
-        SessionManager.Instance.TogglePause();
+        // if any command popup is open, close it instead of showing Pause Menu
+        // (we assume Pause Menu is not shown on top of command popup)
+        if (ActivityManager.Instance.commandPopUp.gameObject.activeSelf)
+        {
+            ActivityManager.Instance.HideCommandPopUp();
+        }
+        else
+        {
+            SessionManager.Instance.TogglePause();
+        }
     }
 }
