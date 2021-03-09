@@ -26,6 +26,24 @@ public class PauseMenu : MonoBehaviour
         blurLayer.materialForRendering.SetTexture("_BlurTex", tempBlurRenderTexture);
         blurLayer.gameObject.SetActive(true);
     }
+    
+    
+    private void OnDestroy()
+    {
+        // cleanup, probably not needed as temporary textures get destroyed when not used for a couple of frames,
+        // but avoids keeping them around in the editor (otherwise they spam Profiler > Memory > Take Sample Playmode)
+        if (blurLayer && blurLayer.materialForRendering)
+        {
+            blurLayer.materialForRendering.SetTexture("_BlurTex", null);
+        }
+
+        if (Camera.main)
+        {
+            Camera.main.targetTexture = null;
+        }
+        
+        RenderTexture.ReleaseTemporary(tempBlurRenderTexture);
+    }
 
     public void OnShow()
     {
@@ -36,7 +54,7 @@ public class PauseMenu : MonoBehaviour
     {
         Camera.main.targetTexture = null;
     }
-    
+
     // Button callback
     public void BackToMainMenu()
     {
