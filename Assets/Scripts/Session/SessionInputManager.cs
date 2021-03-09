@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SessionInputManager : MonoBehaviour
 {
+    // Input action callback
     private void OnTogglePause()
     {
         // if any command popup is open, close it instead of showing Pause Menu
@@ -11,6 +12,10 @@ public class SessionInputManager : MonoBehaviour
         if (ActivityManager.Instance.commandPopUp.gameObject.activeSelf)
         {
             ActivityManager.Instance.HideCommandPopUp();
+        }
+        else if (TutorialManager.Instance.IsShowingMessage)
+        {
+            TutorialManager.Instance.HideMessage();
         }
         else
         {
