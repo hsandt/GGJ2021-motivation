@@ -163,15 +163,15 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
     private void PauseGame()
     {
-        //Time.timeScale = 0f;
         m_Paused = true;
         pauseMenu.gameObject.SetActive(true);
+        pauseMenu.OnShow();
     }
 
     public void ResumeGame()
     {
-//        Time.timeScale = 1.0f;
         m_Paused = false;
+        pauseMenu.OnHide();
         pauseMenu.gameObject.SetActive(false);
     }
     
