@@ -189,4 +189,12 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
             TutorialManager.Instance.ShowMessage(MessageEnum.Success);
         }
     }
+
+#if UNITY_EDITOR
+    public void CheatFinishWriting()
+    {
+        ChapterGameplayValue currentChapterGameplayValue = GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress);
+        currentChapterGameplayValue.AdvanceValue(currentChapterGameplayValue.MaxValue);
+    }
+#endif
 }

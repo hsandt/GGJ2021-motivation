@@ -17,4 +17,12 @@ public class SessionInputManager : MonoBehaviour
             SessionManager.Instance.TogglePause();
         }
     }
+    
+#if UNITY_EDITOR
+    // Input action callback
+    private void OnCheatFinishWriting()
+    {
+        SessionManager.Instance.CheatFinishWriting();
+    }
+#endif
 }
