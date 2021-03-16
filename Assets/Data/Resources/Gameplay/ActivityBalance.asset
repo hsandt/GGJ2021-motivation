@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed097e40a0247e491bc733506820204, type: 3}
   m_Name: ActivityBalance
   m_EditorClassIdentifier: 
+  physicalHealthLowThreshold: 15
+  lowPhysicalHealthProgressPenaltyFactor: 0.5
   writeTimeAdvance: 1
   writeBaseProgressIncrease: 5
   writePhysicalHealthConsumption: 10
@@ -19,7 +21,7 @@ MonoBehaviour:
   writeResearchMaterialConsumption: 10
   writeResearchMaterialExtraProgressIncrease: 10
   researchTimeAdvance: 1
-  researchBaseMaterialIncrease: 5
+  researchBaseMaterialIncrease: 15
   researchPhysicalHealthConsumption: 5
   researchPhysicalHealthExtraMaterialIncrease: 5
   restTimeAdvance: 1
