@@ -4,40 +4,28 @@ Submission for the Global Game Jam 2021 @ Game Dev London on the theme "Lost and
 
 ## Description
 
-...
-
-## How to play
-
-...
-
-## Controls
-
-...
+See the [game page on itch.io](https://komehara.itch.io/finding-inspiration)
 
 ## Credits
 
-## Game design
+### Game design
 
 * [komehara](https://komehara.itch.io/)
 
-## Programming
+### Programming
 
 * [komehara](https://komehara.itch.io/)
 * [Raphael Mathias](https://raphael-mathias.itch.io/)
 
-## Art
+### Art
 
 * [JSTaskis](https://jstaskis.itch.io/)
 
-## Audio
+### Audio
 
 * [Lucia La Rezza](https://itch.io/profile/lucialarezza)
 
-## Known issues
-
-...
-
-## License
+### License
 
 For code, see [LICENSE].
 
