@@ -20,6 +20,7 @@ public class Activity1_Write : ActivityBehaviour
         increase += balance.writeBaseProgressIncrease * timeSpentRatio;
         increase += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpentRatio;
         increase += balance.writeResearchMaterialExtraProgressIncrease * researchMaterialSpentRatio;
+        increase += balance.writeSkillExtraProgressIncreaseFactor * GetSessionValue(SessionGameplayValueType.WritingSkills);
         
         increase *= physicalHealthProgressMultiplier;
         

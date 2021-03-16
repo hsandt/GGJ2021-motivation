@@ -19,7 +19,7 @@ public class ActivityBalance : ScriptableObject
     [Header("Write")]
     
     [Tooltip("Time spent by Write")]
-    public float writeTimeAdvance = 20f;
+    public float writeTimeAdvance = 1f;
     
     [Tooltip("Base Write Progress gain when doing full Write")]
     public float writeBaseProgressIncrease = 10f;
@@ -36,11 +36,20 @@ public class ActivityBalance : ScriptableObject
     [Tooltip("Additional Write Progress gain when consuming standard Research Material")]
     public float writeResearchMaterialExtraProgressIncrease = 10f;
     
+    [Tooltip("Additional Write Progress gain per skill unit")]
+    public float writeSkillExtraProgressIncreaseFactor = 1f;
+    
+    [Tooltip("Base Clarity gain when doing full Write")]
+    public float writeBaseClarityIncrease = 5f;
+
+    [Tooltip("Additional Clarity gain per skill unit")]
+    public float writeSkillExtraClarityIncreaseFactor = 1f;
+    
     
     [Header("Research")]
     
     [Tooltip("Time spent by Research")]
-    public float researchTimeAdvance = 20f;
+    public float researchTimeAdvance = 1f;
     
     [Tooltip("Base Research Material gain when doing full Research")]
     public float researchBaseMaterialIncrease = 10f;
@@ -52,10 +61,25 @@ public class ActivityBalance : ScriptableObject
     public float researchPhysicalHealthExtraMaterialIncrease = 5f;
     
     
+    [Header("Study")]
+    
+    [Tooltip("Time spent by Study")]
+    public float studyTimeAdvance = 1f;
+    
+    [Tooltip("Base Study Material gain when doing full Study")]
+    public float studyBaseMaterialIncrease = 5f;
+    
+    [Tooltip("Physical Health loss when doing full Study")]
+    public float studyPhysicalHealthConsumption = 5f;
+    
+    [Tooltip("Additional Study Material gain when fully consuming Physical Health")]
+    public float studyPhysicalHealthExtraMaterialIncrease = 5f;
+    
+    
     [Header("Rest")]
     
     [Tooltip("Time spent by Rest")]
-    public float restTimeAdvance = 20f;
+    public float restTimeAdvance = 1f;
     
     [Tooltip("Physical Health health gain when doing full Rest")]
     public float restPhysicalHealthIncrease = 20f;
