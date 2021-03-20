@@ -6,9 +6,12 @@ public class Activity6_FeedbackFamily : ActivityBehaviour
 {
     public override void Execute()
     {
-        Debug.Log("FeedbackFamily");
+        float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.feedbackFamilyTimeAdvance);
+
+        float insightForClarityIncrease = 0f;
+        insightForClarityIncrease += balance.feedbackFamilyInsightForClarityIncrease * timeSpentRatio;
         
-        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(5f);
-        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(0f);
+        float insightForClarityAdvance = AdvanceSessionValue(SessionGameplayValueType.InsightClarity, insightForClarityIncrease);
+        Debug.LogFormat("Feedback Family: Insight for Clarity +{0}", insightForClarityAdvance);
     }
 }

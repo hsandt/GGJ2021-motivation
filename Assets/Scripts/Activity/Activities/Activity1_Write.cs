@@ -16,6 +16,9 @@ public class Activity1_Write : ActivityBehaviour
         float researchMaterialSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
             SessionGameplayValueType.ResearchMaterial, balance.writeResearchMaterialConsumption, timeSpentRatio);
 
+        float insightForClaritySpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
+            SessionGameplayValueType.InsightClarity, balance.writeInsightForClarityConsumption, timeSpentRatio);
+
         float writingIncrease = 0f;
         writingIncrease += balance.writeBaseProgressIncrease * timeSpentRatio;
         writingIncrease += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpentRatio;
@@ -29,6 +32,7 @@ public class Activity1_Write : ActivityBehaviour
         
         float clarityIncrease = 0f;
         clarityIncrease += balance.writeBaseClarityIncrease * timeSpentRatio;
+        clarityIncrease += balance.writeInsightForClarityExtraClarityIncrease * insightForClaritySpentRatio;
         clarityIncrease += balance.writeSkillExtraClarityIncreaseFactor * GetSessionValue(SessionGameplayValueType.WritingSkills);
         
         clarityIncrease *= physicalHealthProgressMultiplier;

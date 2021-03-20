@@ -27,13 +27,13 @@ public class ActivityBalance : ScriptableObject
     [Tooltip("Physical Health standard consumption when doing full Write")]
     public float writePhysicalHealthConsumption = 5f;
     
-    [Tooltip("Additional Write Progress gain when consuming standard Physical Health")]
+    [Tooltip("Additional Write Progress gain when consuming standard amount of Physical Health")]
     public float writePhysicalHealthExtraProgressIncrease = 5f;
     
     [Tooltip("Research Material standard consumption when doing full Write")]
     public float writeResearchMaterialConsumption = 10f;
     
-    [Tooltip("Additional Write Progress gain when consuming standard Research Material")]
+    [Tooltip("Additional Write Progress gain when consuming standard amount of Research Material")]
     public float writeResearchMaterialExtraProgressIncrease = 10f;
     
     [Tooltip("Additional Write Progress gain per skill unit")]
@@ -44,6 +44,12 @@ public class ActivityBalance : ScriptableObject
 
     [Tooltip("Additional Clarity gain per skill unit")]
     public float writeSkillExtraClarityIncreaseFactor = 1f;
+    
+    [Tooltip("Insight for Clarity standard consumption when doing full Write")]
+    public float writeInsightForClarityConsumption = 10f;
+    
+    [Tooltip("Additional Clarity gain when consuming standard amount of Insight for Clarity")]
+    public float writeInsightForClarityExtraClarityIncrease = 1f;
     
     
     [Header("Research")]
@@ -74,6 +80,15 @@ public class ActivityBalance : ScriptableObject
     
     [Tooltip("Additional Study Material gain when fully consuming Physical Health")]
     public float studyPhysicalHealthExtraMaterialIncrease = 5f;
+    
+    
+    [Header("Feedback Family")]
+    
+    [Tooltip("Time spent by Feedback Family")]
+    public float feedbackFamilyTimeAdvance = 1f;
+    
+    [Tooltip("Insight for Clarity gain when doing full Feedback Family")]
+    public float feedbackFamilyInsightForClarityIncrease = 5f;
     
     
     [Header("Rest")]
