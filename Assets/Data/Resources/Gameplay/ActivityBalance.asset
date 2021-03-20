@@ -20,10 +20,17 @@ MonoBehaviour:
   writePhysicalHealthExtraProgressIncrease: 5
   writeResearchMaterialConsumption: 10
   writeResearchMaterialExtraProgressIncrease: 10
+  writeSkillExtraProgressIncreaseFactor: 1
+  writeBaseClarityIncrease: 5
+  writeSkillExtraClarityIncreaseFactor: 1
   researchTimeAdvance: 1
   researchBaseMaterialIncrease: 15
   researchPhysicalHealthConsumption: 5
   researchPhysicalHealthExtraMaterialIncrease: 5
+  studyTimeAdvance: 1
+  studyBaseMaterialIncrease: 2
+  studyPhysicalHealthConsumption: 5
+  studyPhysicalHealthExtraMaterialIncrease: 2
   restTimeAdvance: 1
   restPhysicalHealthIncrease: 20
   restMentalHealthIncrease: 10

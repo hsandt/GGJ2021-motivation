@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData3_Study
   m_EditorClassIdentifier: 
   id: 3
-  lockedOnStart: 1
+  lockedOnStart: 0
   activityName: Study
   description: Read advice on writing and polish your skills by training
   characterPoseEnum: 4

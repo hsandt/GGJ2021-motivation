@@ -16,14 +16,24 @@ public class Activity1_Write : ActivityBehaviour
         float researchMaterialSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
             SessionGameplayValueType.ResearchMaterial, balance.writeResearchMaterialConsumption, timeSpentRatio);
 
-        float increase = 0f;
-        increase += balance.writeBaseProgressIncrease * timeSpentRatio;
-        increase += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpentRatio;
-        increase += balance.writeResearchMaterialExtraProgressIncrease * researchMaterialSpentRatio;
+        float writingIncrease = 0f;
+        writingIncrease += balance.writeBaseProgressIncrease * timeSpentRatio;
+        writingIncrease += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpentRatio;
+        writingIncrease += balance.writeResearchMaterialExtraProgressIncrease * researchMaterialSpentRatio;
+        writingIncrease += balance.writeSkillExtraProgressIncreaseFactor * GetSessionValue(SessionGameplayValueType.WritingSkills);
         
-        increase *= physicalHealthProgressMultiplier;
+        writingIncrease *= physicalHealthProgressMultiplier;
         
-        float advance = AdvanceCurrentChapterValue(ChapterGameplayValueType.WritingProgress, increase);
-        Debug.LogFormat("Write: Write Progress +{0}", advance);
+        float writingAdvance = AdvanceCurrentChapterValue(ChapterGameplayValueType.WritingProgress, writingIncrease);
+        Debug.LogFormat("Write: Write Progress +{0}", writingAdvance);
+        
+        float clarityIncrease = 0f;
+        clarityIncrease += balance.writeBaseClarityIncrease * timeSpentRatio;
+        clarityIncrease += balance.writeSkillExtraClarityIncreaseFactor * GetSessionValue(SessionGameplayValueType.WritingSkills);
+        
+        clarityIncrease *= physicalHealthProgressMultiplier;
+        
+        float clarityAdvance = AdvanceCurrentChapterValue(ChapterGameplayValueType.Clarity, clarityIncrease);
+        Debug.LogFormat("Write: Clarity +{0}", clarityAdvance);
     }
 }
