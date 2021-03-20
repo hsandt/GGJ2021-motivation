@@ -8,7 +8,7 @@ public class Activity6_FeedbackFamily : ActivityBehaviour
     {
         Debug.Log("FeedbackFamily");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(5f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(5f);
+        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(0f);
     }
 }

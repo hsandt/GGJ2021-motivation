@@ -6,9 +6,20 @@ public class Activity3_Study : ActivityBehaviour
 {
     public override void Execute()
     {
-        Debug.Log("Study");
+        float physicalHealthProgressMultiplier = GetPhysicalHealthProgressMultiplier();
+
+        float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.studyTimeAdvance);
+
+        float physicalHealthSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
+            SessionGameplayValueType.PhysicalHealth, balance.studyPhysicalHealthConsumption, timeSpentRatio);
+
+        float increase = 0f;
+        increase += balance.studyBaseMaterialIncrease * timeSpentRatio;
+        increase += balance.studyPhysicalHealthExtraMaterialIncrease * physicalHealthSpentRatio;
         
-        m_GameplayValuesContainer.motivation.ChangeValue(5f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
+        increase *= physicalHealthProgressMultiplier;
+
+        float advance = AdvanceSessionValue(SessionGameplayValueType.WritingSkills, increase);
+        Debug.LogFormat("Study: Writing Skills +{0}", advance);
     }
 }

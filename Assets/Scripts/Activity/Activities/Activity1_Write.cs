@@ -6,9 +6,34 @@ public class Activity1_Write : ActivityBehaviour
 {
     public override void Execute()
     {
-        Debug.Log("Write");
+        float physicalHealthProgressMultiplier = GetPhysicalHealthProgressMultiplier();
+
+        float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.writeTimeAdvance);
+
+        float physicalHealthSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
+            SessionGameplayValueType.PhysicalHealth, balance.writePhysicalHealthConsumption, timeSpentRatio);
+
+        float researchMaterialSpentRatio = TryConsumeSessionValueAndReturnConsumptionRatio(
+            SessionGameplayValueType.ResearchMaterial, balance.writeResearchMaterialConsumption, timeSpentRatio);
+
+        float writingIncrease = 0f;
+        writingIncrease += balance.writeBaseProgressIncrease * timeSpentRatio;
+        writingIncrease += balance.writePhysicalHealthExtraProgressIncrease * physicalHealthSpentRatio;
+        writingIncrease += balance.writeResearchMaterialExtraProgressIncrease * researchMaterialSpentRatio;
+        writingIncrease += balance.writeSkillExtraProgressIncreaseFactor * GetSessionValue(SessionGameplayValueType.WritingSkills);
         
-        m_GameplayValuesContainer.motivation.ChangeValue(-5f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(10f);
+        writingIncrease *= physicalHealthProgressMultiplier;
+        
+        float writingAdvance = AdvanceCurrentChapterValue(ChapterGameplayValueType.WritingProgress, writingIncrease);
+        Debug.LogFormat("Write: Write Progress +{0}", writingAdvance);
+        
+        float clarityIncrease = 0f;
+        clarityIncrease += balance.writeBaseClarityIncrease * timeSpentRatio;
+        clarityIncrease += balance.writeSkillExtraClarityIncreaseFactor * GetSessionValue(SessionGameplayValueType.WritingSkills);
+        
+        clarityIncrease *= physicalHealthProgressMultiplier;
+        
+        float clarityAdvance = AdvanceCurrentChapterValue(ChapterGameplayValueType.Clarity, clarityIncrease);
+        Debug.LogFormat("Write: Clarity +{0}", clarityAdvance);
     }
 }

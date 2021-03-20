@@ -15,30 +15,43 @@ public class TutorialManager : SingletonManager<TutorialManager>
     
     /* Cached data references */
 
-    private TutorialData m_tutorialData;
+    private TutorialData m_TutorialData;
     
+    
+    /* State */
+
+    private bool m_IsShowingMessage;
+    public bool IsShowingMessage => m_IsShowingMessage;
+        
     
     protected override void Init()
     {
-        m_tutorialData = Resources.Load<TutorialData>("Tutorial/TutorialData");
+        m_TutorialData = Resources.Load<TutorialData>("Tutorial/TutorialData");
     }
 
     private void Start()
     {
+        Setup();
+    }
+
+    private void Setup()
+    {
+        m_IsShowingMessage = false;
         canvasMessage.gameObject.SetActive(false);
     }
 
-
     public void ShowMessage(MessageEnum messageType)
     {
+        m_IsShowingMessage = true;
         canvasMessage.gameObject.SetActive(true);
         
-        TutorialMessage message = m_tutorialData.tutorialMessages[(int)messageType];
+        TutorialMessage message = m_TutorialData.tutorialMessages[(int)messageType];
         canvasMessage.ShowMessage(message.senderName, message.subjectText, message.messageText);
     }
     
     public void HideMessage()
     {
+        m_IsShowingMessage = false;
         canvasMessage.gameObject.SetActive(false);
     }
 }

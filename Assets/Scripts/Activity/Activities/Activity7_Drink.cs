@@ -8,6 +8,6 @@ public class Activity7_Drink : ActivityBehaviour
     {
         Debug.Log("Drink");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(10f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(10f);
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData9_FreshAir
   m_EditorClassIdentifier: 
   id: 9
+  lockedOnStart: 1
   activityName: Fresh air
   description: Get some fresh air at the local window
   characterPoseEnum: 6

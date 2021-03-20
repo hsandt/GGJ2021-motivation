@@ -1,21 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayValue : MonoBehaviour
+[Serializable]
+public class GameplayValue<TGameplayValueType>
 {
-    [Header("Parameters")]
-
-    [SerializeField, Tooltip("Readable name")]
-    private string m_ValueName = "Value name";
-    public string ValueName => m_ValueName;
+    /// Informative data (doesn't depend on dificulty)
+    private GameplayValueData<TGameplayValueType> m_data;
+    public GameplayValueData<TGameplayValueType> Data => m_data;
 
     
     /* Parameters set by Session Manager */
     
     /// Max value
     private float m_MaxValue;
-    
+    public float MaxValue => m_MaxValue;
+
     
     /* State */
 
@@ -23,14 +24,18 @@ public class GameplayValue : MonoBehaviour
     private float m_CurrentValue;
     public float CurrentValue => m_CurrentValue;
 
+
     /// List of observers
     private List<IGameplayValueObserver> m_Observers = new List<IGameplayValueObserver>();
 
     
-    public void Init(float maxValue, float initialValue)
+    public void Init(GameplayValueData<TGameplayValueType> data, int difficultyLevel)
     {
-        m_MaxValue = maxValue;
-        SetValue(initialValue);
+        m_data = data;
+
+        GameplayValueParameter parameter = data.parameterPerDifficultyLevel[difficultyLevel];
+        m_MaxValue = parameter.maxValue;
+        SetValue(parameter.initialValue);
     }
     
     public void SetValue(float value)
@@ -43,6 +48,22 @@ public class GameplayValue : MonoBehaviour
     {
         // pass negative deltaValue to decrease
         SetValue(m_CurrentValue + deltaValue);
+    }
+    
+    /// Advance session value and return actual advance (clamped via ChangeValue if value reached max)
+    public float AdvanceValue(float deltaValue)
+    {
+        float oldValue = m_CurrentValue;
+        ChangeValue(deltaValue);
+        return m_CurrentValue - oldValue;
+    }
+
+    /// Consume value and return actual consumption (clamped via ChangeValue if value reached 0)
+    public float ConsumeValue(float consumptionValue)
+    {
+        float oldValue = m_CurrentValue;
+        ChangeValue(- consumptionValue);
+        return oldValue - m_CurrentValue;
     }
 
     public float GetRatio()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DifficultySetting", menuName = "Data/Difficulty Setting", order = 3)]
 public class DifficultySetting : ScriptableObject
 {
-
-    [Tooltip("Initial value for Writing Progress")]
-    public float initialWritingProgress = 0f;
-
-    [Tooltip("Max value for Writing Progress")]
-    public float maxWritingProgress = 100f;
-
-    [Tooltip("Initial value for Motivation")]
-    public float initialMotivation = 50f;
-
-    [Tooltip("Max value for Motivation")]
-    public float maxMotivation = 100f;
-
+    [Tooltip("Difficulty level, from 0. Used as index to determine which parameter to use for each Gameplay Value Data.")]
+    public int level = 0;
+    
+    [Tooltip("Number of chapters required to complete the novel")]
+    public int chaptersCount = 1;
 }
-

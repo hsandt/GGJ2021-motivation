@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ActivityData5_FeedbackFriend
   m_EditorClassIdentifier: 
   id: 5
+  lockedOnStart: 1
   activityName: Feedback (friend)
   description: Ask feedback to your friend. They are cool, but will spot weird issues.
   characterPoseEnum: 3

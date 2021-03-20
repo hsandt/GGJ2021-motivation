@@ -44,18 +44,19 @@ public class AudioManager : SingletonManager<AudioManager>, IGameplayValueObserv
     {
         // copy cached reference already set on SessionManager (at Awake time)
         m_GameplayValuesContainer = SessionManager.Instance.GameplayValuesContainer;
-        m_GameplayValuesContainer.motivation.RegisterObserver(this);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).RegisterObserver(this);
+        
+        // we need to play the bgm manually once since we are registering after the initial value setting and
+        // NotifyValueChange won't be called until the next change of Physical Health
+        PlayBgmMatchingMotivation();
     }
     
     private void OnDestroy()
     {
-        if (m_GameplayValuesContainer.motivation)
-        {
-            m_GameplayValuesContainer.motivation.UnregisterObserver(this);
-        }
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth)?.UnregisterObserver(this);
     }
 
-    public void PlayBGM(AudioClip bgm)
+    public void PlayBgm(AudioClip bgm)
     {
         if (bgmAudioSource.clip != bgm)
         {
@@ -73,13 +74,18 @@ public class AudioManager : SingletonManager<AudioManager>, IGameplayValueObserv
 
     public void NotifyValueChange()
     {
-        if (m_GameplayValuesContainer.motivation.GetRatio() < m_DynamicAudioParameters.highMotivationThresholdRatio)
+        PlayBgmMatchingMotivation();
+    }
+    
+    private void PlayBgmMatchingMotivation()
+    {
+        if (m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).GetRatio() < m_DynamicAudioParameters.highMotivationThresholdRatio)
         {
-            PlayBGM(bgmMotivationLow);
+            PlayBgm(bgmMotivationLow);
         }
         else
         {
-            PlayBGM(bgmMotivationHigh);
+            PlayBgm(bgmMotivationHigh);
         }
     }
 }

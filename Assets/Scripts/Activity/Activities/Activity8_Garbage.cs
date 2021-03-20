@@ -8,7 +8,7 @@ public class Activity8_Garbage : ActivityBehaviour
     {
         Debug.Log("Garbage");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(15f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(15f);
+        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(0f);
     }
 }

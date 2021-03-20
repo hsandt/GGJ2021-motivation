@@ -6,12 +6,18 @@ using CommonsHelper;
 using CommonsPattern;
 using UnityConstants;
 
+using SessionGameplayValue = GameplayValue<SessionGameplayValueType>;
+using ChapterGameplayValue = GameplayValue<ChapterGameplayValueType>;
+
 public class SessionManager : SingletonManager<SessionManager>, IGameplayValueObserver
 {
     [Header("Assets references")]
 
     [Tooltip("Difficulty setting to use for this session")]
     public DifficultySetting difficultySetting;
+
+    [Tooltip("Activity game balance data")]
+    public ActivityBalance activityBalance;
 
     
     [Header("External references")]
@@ -31,11 +37,31 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     private GameplayValuesContainer m_GameplayValuesContainer;
     public GameplayValuesContainer GameplayValuesContainer => m_GameplayValuesContainer;
 
+
+    /* Observed values */
+
+    private GameplayValue<ChapterGameplayValueType> m_LastChapterProgress;
+    
     
     /* State */
     
+    /// Is the game paused?
     private bool m_Paused;
+    
+    /// Current chapter index the character is working on
+    private int m_CurrentChapterIndex;
+    public int CurrentChapterIndex => m_CurrentChapterIndex;
 
+    public SessionGameplayValue GetSessionGameplayValue(SessionGameplayValueType type)
+    {
+        return m_GameplayValuesContainer.GetSessionGameplayValue(type);
+    }
+    
+    public ChapterGameplayValue GetCurrentChapterGameplayValue(ChapterGameplayValueType type)
+    {
+        return m_GameplayValuesContainer.GetChapterGameplayValue(m_CurrentChapterIndex, type);
+    }
+    
     
     protected override void Init()
     {
@@ -43,6 +69,9 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
         if (gameplayValuesContainerGameObject)
         {
             m_GameplayValuesContainer = gameplayValuesContainerGameObject.GetComponentOrFail<GameplayValuesContainer>();
+            
+            // create gameplay value arrays early so this object, and others can register themselves as observers of these values
+            m_GameplayValuesContainer.CreateGameplayValueArrays(difficultySetting);
         }
         else
         {
@@ -99,8 +128,11 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
         m_Paused = false;
         pauseMenu.gameObject.SetActive(false);
 
-        // track progress for Victory
-        m_GameplayValuesContainer.writingProgress.RegisterObserver(this);
+        m_CurrentChapterIndex = 0;
+
+        // track progress for Victory by monitoring the last chapter's progress
+        m_LastChapterProgress = m_GameplayValuesContainer.GetChapterGameplayValue(difficultySetting.chaptersCount - 1, ChapterGameplayValueType.WritingProgress);
+        m_LastChapterProgress.RegisterObserver(this);
         
         // initialise multi-object animators so character starts working on desktop, with all activity items visible
         // aesthetics note: items will fade in after scene load!
@@ -110,16 +142,11 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
     private void SetupSessionDelayed()
     {
-        m_GameplayValuesContainer.writingProgress.Init(difficultySetting.maxWritingProgress, difficultySetting.initialWritingProgress);
-        m_GameplayValuesContainer.motivation.Init(difficultySetting.maxMotivation, difficultySetting.initialMotivation);
     }
     
     private void OnDestroy()
     {
-        if (m_GameplayValuesContainer.writingProgress)
-        {
-            m_GameplayValuesContainer.writingProgress.UnregisterObserver(this);
-        }
+        m_LastChapterProgress?.UnregisterObserver(this);
     }
 
     public void TogglePause()
@@ -136,15 +163,15 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
 
     private void PauseGame()
     {
-        //Time.timeScale = 0f;
         m_Paused = true;
         pauseMenu.gameObject.SetActive(true);
+        pauseMenu.OnShow();
     }
 
     public void ResumeGame()
     {
-//        Time.timeScale = 1.0f;
         m_Paused = false;
+        pauseMenu.OnHide();
         pauseMenu.gameObject.SetActive(false);
     }
     
@@ -156,10 +183,18 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
     public void NotifyValueChange()
     {
         // progress changed, check if complete
-        if (m_GameplayValuesContainer.writingProgress.GetRatio() >= 1f)
+        if (m_LastChapterProgress.GetRatio() >= 1f)
         {
             // success!
             TutorialManager.Instance.ShowMessage(MessageEnum.Success);
         }
     }
+
+#if UNITY_EDITOR
+    public void CheatFinishWriting()
+    {
+        ChapterGameplayValue currentChapterGameplayValue = GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress);
+        currentChapterGameplayValue.AdvanceValue(currentChapterGameplayValue.MaxValue);
+    }
+#endif
 }

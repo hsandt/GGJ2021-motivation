@@ -6,9 +6,13 @@ public class Activity11_Rest : ActivityBehaviour
 {
     public override void Execute()
     {
-        Debug.Log("Rest");
+        float timeSpentRatio = TryAdvanceTimeAndReturnAdvanceRatio(balance.restTimeAdvance);
+
+        float physicalHealthIncrease = balance.restPhysicalHealthIncrease * timeSpentRatio;
+        float mentalHealthIncrease = balance.restMentalHealthIncrease * timeSpentRatio;
         
-        m_GameplayValuesContainer.motivation.ChangeValue(20f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(0f);
+        float physicalHealthAdvance = AdvanceSessionValue(SessionGameplayValueType.PhysicalHealth, physicalHealthIncrease);
+        float mentalHealthAdvance = AdvanceSessionValue(SessionGameplayValueType.MentalHealth, mentalHealthIncrease);
+        Debug.LogFormat("Rest: PhysicalHealth +{0}, Mental Health +{1}", physicalHealthAdvance, mentalHealthAdvance);
     }
 }

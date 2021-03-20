@@ -8,7 +8,7 @@ public class Activity5_FeedbackFriend : ActivityBehaviour
     {
         Debug.Log("FeedbackFriend");
         
-        m_GameplayValuesContainer.motivation.ChangeValue(5f);
-        m_GameplayValuesContainer.writingProgress.ChangeValue(10f);
+        m_GameplayValuesContainer.GetSessionGameplayValue(SessionGameplayValueType.PhysicalHealth).ChangeValue(5f);
+        SessionManager.Instance.GetCurrentChapterGameplayValue(ChapterGameplayValueType.WritingProgress).ChangeValue(10f);
     }
 }
