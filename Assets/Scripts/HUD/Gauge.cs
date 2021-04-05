@@ -66,6 +66,8 @@ public abstract class Gauge<TGameplayValueType> : MonoBehaviour, IGameplayValueO
         }
         valueTextWidget.text = valueText;
         
+        // Old code was moving anchor, but now we should use the Rect Mask 2D component width
+        // to have a rectangle edge. However this uses a px width so we must calculate value from ratio. 
         fillRectTransform.anchorMax = new Vector2(m_TrackedGameplayValue.GetRatio(), 1f);
     }
 

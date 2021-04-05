@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: ed1bf306d8a535f488732b1345a86497
+guid: 66adb31b253bd4d70ad49d00a18dc4e7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6275841549285196307
+    second: GaugeFrame_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 60, y: 60, z: 60, w: 60}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
