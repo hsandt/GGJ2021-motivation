@@ -23,6 +23,8 @@ MonoBehaviour:
   writeSkillExtraProgressIncreaseFactor: 1
   writeBaseClarityIncrease: 5
   writeSkillExtraClarityIncreaseFactor: 1
+  writeInsightForClarityConsumption: 10
+  writeInsightForClarityExtraClarityIncrease: 10
   researchTimeAdvance: 1
   researchBaseMaterialIncrease: 15
   researchPhysicalHealthConsumption: 5
@@ -31,6 +33,8 @@ MonoBehaviour:
   studyBaseMaterialIncrease: 2
   studyPhysicalHealthConsumption: 5
   studyPhysicalHealthExtraMaterialIncrease: 2
+  feedbackFamilyTimeAdvance: 1
+  feedbackFamilyInsightForClarityIncrease: 10
   restTimeAdvance: 1
   restPhysicalHealthIncrease: 20
   restMentalHealthIncrease: 10
