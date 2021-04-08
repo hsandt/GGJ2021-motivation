@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using CommonsHelper;
 using UnityEngine;
+
+using CommonsHelper;
 
 public class MaterialAlphaFadeOnMesh : MonoBehaviour
 {
