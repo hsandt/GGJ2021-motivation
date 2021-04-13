@@ -87,7 +87,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771726389137004780, guid: efd7bc828d55c8102a572e1648526f16, type: 3}
       propertyPath: m_Name
-      value: Gauge Chapter
+      value: Gauge Bar Chapter
       objectReference: {fileID: 0}
     - target: {fileID: 4771726389137004783, guid: efd7bc828d55c8102a572e1648526f16, type: 3}
       propertyPath: m_Pivot.x

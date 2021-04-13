@@ -57,9 +57,14 @@ public class SessionManager : SingletonManager<SessionManager>, IGameplayValueOb
         return m_GameplayValuesContainer.GetSessionGameplayValue(type);
     }
     
+    public ChapterGameplayValue GetChapterGameplayValue(int chapterIndex, ChapterGameplayValueType type)
+    {
+        return m_GameplayValuesContainer.GetChapterGameplayValue(chapterIndex, type);
+    }
+    
     public ChapterGameplayValue GetCurrentChapterGameplayValue(ChapterGameplayValueType type)
     {
-        return m_GameplayValuesContainer.GetChapterGameplayValue(m_CurrentChapterIndex, type);
+        return GetChapterGameplayValue(m_CurrentChapterIndex, type);
     }
     
     

@@ -35,11 +35,18 @@ public abstract class Gauge<TGameplayValueType> : MonoBehaviour, IGameplayValueO
     {
         m_TrackedGameplayValue = gameplayValue;
         m_TrackedGameplayValue.RegisterObserver(this);
+        
+        OnSetTrackedGameplayValue();
+        
+        // set value text once and for all
         valueNameWidget.text = m_TrackedGameplayValue.Data.valueName;
         
         // refresh immediately as we have missed the first value change GameplayValuesContainer.CreateGameplayValueArrays
         RefreshGaugeFillSize();
     }
+    
+    /// Override for initialization that requires to know gameplay value, and must done before the first RefreshGaugeFillSize
+    protected virtual void OnSetTrackedGameplayValue() {}
 
     protected virtual void RefreshGaugeFillSize()
     {
@@ -55,6 +62,9 @@ public abstract class Gauge<TGameplayValueType> : MonoBehaviour, IGameplayValueO
         }
         valueTextWidget.text = valueText;
     }
+
+    
+    /* IGameplayValueObserver */
 
     public void NotifyValueChange()
     {

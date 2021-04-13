@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DifficultySetting
   m_EditorClassIdentifier: 
   level: 0
-  chaptersCount: 2
+  chaptersCount: 1
